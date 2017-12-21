@@ -7,22 +7,30 @@ Method | HTTP request | Description
 [**cancel_report**](DefaultApi.md#cancel_report) | **POST** /checks/{check_id}/reports/{report_id}/cancel | This endpoint is for cancelling individual paused reports.
 [**create_applicant**](DefaultApi.md#create_applicant) | **POST** /applicants | Create Applicant
 [**create_check**](DefaultApi.md#create_check) | **POST** /applicants/{applicant_id}/checks | Create a check
+[**create_webhook**](DefaultApi.md#create_webhook) | **POST** /webhooks | Create a webhook
 [**destroy_applicant**](DefaultApi.md#destroy_applicant) | **DELETE** /applicants/{applicant_id} | Delete Applicant
 [**download_document**](DefaultApi.md#download_document) | **GET** /applicants/{applicant_id}/documents/{document_id}/download | Download a documents raw data
+[**download_live_photo**](DefaultApi.md#download_live_photo) | **GET** /live_photos/{live_photo_id}/download | Download live photo
+[**find_addresses**](DefaultApi.md#find_addresses) | **GET** /addresses/pick | Search for addresses by postcode
 [**find_applicant**](DefaultApi.md#find_applicant) | **GET** /applicants/{applicant_id} | Retrieve Applicant
 [**find_check**](DefaultApi.md#find_check) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
 [**find_document**](DefaultApi.md#find_document) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
+[**find_live_photo**](DefaultApi.md#find_live_photo) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
 [**find_report**](DefaultApi.md#find_report) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 [**find_report_type_group**](DefaultApi.md#find_report_type_group) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
+[**find_webhook**](DefaultApi.md#find_webhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
 [**list_applicants**](DefaultApi.md#list_applicants) | **GET** /applicants | List Applicants
 [**list_checks**](DefaultApi.md#list_checks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 [**list_documents**](DefaultApi.md#list_documents) | **GET** /applicants/{applicant_id}/documents | List documents
+[**list_live_photos**](DefaultApi.md#list_live_photos) | **GET** /live_photos | List live photos
 [**list_report_type_groups**](DefaultApi.md#list_report_type_groups) | **GET** /report_type_groups | Retrieve all report type groups
 [**list_reports**](DefaultApi.md#list_reports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
+[**list_webhooks**](DefaultApi.md#list_webhooks) | **GET** /webhooks | List webhooks
 [**resume_check**](DefaultApi.md#resume_check) | **POST** /checks/{check_id}/resume | Resume a Check
 [**resume_report**](DefaultApi.md#resume_report) | **POST** /checks/{check_id}/reports/{report_id}/resume | This endpoint is for resuming individual paused reports.
 [**update_applicant**](DefaultApi.md#update_applicant) | **PUT** /applicants/{applicant_id} | Update Applicant
 [**upload_document**](DefaultApi.md#upload_document) | **POST** /applicants/{applicant_id}/documents | Upload a document
+[**upload_live_photo**](DefaultApi.md#upload_live_photo) | **POST** /live_photos | Upload live photo
 
 
 # **cancel_report**
@@ -145,6 +153,45 @@ Name | Type | Description  | Notes
 
 [**Check**](Check.md)
 
+# **create_webhook**
+> Webhook create_webhook(data=data)
+
+Create a webhook
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+data = onfido.Webhook() # Webhook |  (optional)
+
+try: 
+    # Create a webhook
+    api_response = api_instance.create_webhook(data=data)
+    pprint(api_response)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **data** | [**Webhook**](Webhook.md)|  | [optional] 
+
+### Return type
+
+[**Webhook**](Webhook.md)
+
 # **destroy_applicant**
 > destroy_applicant(applicant_id)
 
@@ -223,6 +270,86 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**file**](file.md)
+
+# **download_live_photo**
+> file download_live_photo(live_photo_id)
+
+Download live photo
+
+Live photos are downloaded using this endpoint.
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+live_photo_id = 'live_photo_id_example' # str | The live photo’s unique identifier.
+
+try: 
+    # Download live photo
+    api_response = api_instance.download_live_photo(live_photo_id)
+    pprint(api_response)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **live_photo_id** | **str**| The live photo’s unique identifier. | 
+
+### Return type
+
+[**file**](file.md)
+
+# **find_addresses**
+> GenericAddressesList find_addresses(postcode)
+
+Search for addresses by postcode
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+postcode = 'postcode_example' # str | 
+
+try: 
+    # Search for addresses by postcode
+    api_response = api_instance.find_addresses(postcode)
+    pprint(api_response)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **postcode** | **str**|  | 
+
+### Return type
+
+[**GenericAddressesList**](GenericAddressesList.md)
 
 # **find_applicant**
 > Applicant find_applicant(applicant_id)
@@ -345,6 +472,45 @@ Name | Type | Description  | Notes
 
 [**Document**](Document.md)
 
+# **find_live_photo**
+> LivePhoto find_live_photo(live_photo_id)
+
+Retrieve live photo
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+live_photo_id = 'live_photo_id_example' # str | The live photo’s unique identifier.
+
+try: 
+    # Retrieve live photo
+    api_response = api_instance.find_live_photo(live_photo_id)
+    pprint(api_response)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **live_photo_id** | **str**| The live photo’s unique identifier. | 
+
+### Return type
+
+[**LivePhoto**](LivePhoto.md)
+
 # **find_report**
 > Report find_report(check_id, report_id)
 
@@ -424,6 +590,45 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ReportTypeGroup**](ReportTypeGroup.md)
+
+# **find_webhook**
+> Webhook find_webhook(webhook_id)
+
+Retrieve a Webhook
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+webhook_id = 'webhook_id_example' # str | 
+
+try: 
+    # Retrieve a Webhook
+    api_response = api_instance.find_webhook(webhook_id)
+    pprint(api_response)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhook_id** | **str**|  | 
+
+### Return type
+
+[**Webhook**](Webhook.md)
 
 # **list_applicants**
 > ApplicantsList list_applicants()
@@ -540,6 +745,45 @@ Name | Type | Description  | Notes
 
 [**DocumentsList**](DocumentsList.md)
 
+# **list_live_photos**
+> LivePhotosList list_live_photos(applicant_id)
+
+List live photos
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+applicant_id = 'applicant_id_example' # str | The id of the applicant the live photos belongs to.
+
+try: 
+    # List live photos
+    api_response = api_instance.list_live_photos(applicant_id)
+    pprint(api_response)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicant_id** | **str**| The id of the applicant the live photos belongs to. | 
+
+### Return type
+
+[**LivePhotosList**](LivePhotosList.md)
+
 # **list_report_type_groups**
 > ReportTypeGroupsList list_report_type_groups()
 
@@ -613,6 +857,41 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ReportsList**](ReportsList.md)
+
+# **list_webhooks**
+> WebhooksList list_webhooks()
+
+List webhooks
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+
+try: 
+    # List webhooks
+    api_response = api_instance.list_webhooks()
+    pprint(api_response)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**WebhooksList**](WebhooksList.md)
 
 # **resume_check**
 > resume_check(check_id)
@@ -779,4 +1058,49 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Document**](Document.md)
+
+# **upload_live_photo**
+> LivePhoto upload_live_photo(applicant_id, file, advanced_validation=advanced_validation)
+
+Upload live photo
+
+You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+applicant_id = 'applicant_id_example' # str | The applicant_id to associate the live photo to.
+file = '/path/to/file.txt' # file | The file to be uploaded.
+advanced_validation = true # bool | Validates that the live photo contains exactly one face. (optional)
+
+try: 
+    # Upload live photo
+    api_response = api_instance.upload_live_photo(applicant_id, file, advanced_validation=advanced_validation)
+    pprint(api_response)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicant_id** | **str**| The applicant_id to associate the live photo to. | 
+ **file** | **file**| The file to be uploaded. | 
+ **advanced_validation** | **bool**| Validates that the live photo contains exactly one face. | [optional] 
+
+### Return type
+
+[**LivePhoto**](LivePhoto.md)
 

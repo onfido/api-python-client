@@ -3,7 +3,7 @@
 """
     Onfido API
 
-    The Onfido API is used to submit background checking requests
+    The Onfido API is used to submit check requests.
 
     OpenAPI spec version: 2.0.0
     
@@ -34,13 +34,19 @@ from .models.checks_list import ChecksList
 from .models.document import Document
 from .models.documents_list import DocumentsList
 from .models.error import Error
+from .models.generic_address import GenericAddress
+from .models.generic_addresses_list import GenericAddressesList
 from .models.id_number import IdNumber
+from .models.live_photo import LivePhoto
+from .models.live_photos_list import LivePhotosList
 from .models.report import Report
 from .models.report_type import ReportType
 from .models.report_type_group import ReportTypeGroup
 from .models.report_type_groups_list import ReportTypeGroupsList
 from .models.report_type_option import ReportTypeOption
 from .models.reports_list import ReportsList
+from .models.webhook import Webhook
+from .models.webhooks_list import WebhooksList
 
 # import apis into sdk package
 from .apis.default_api import DefaultApi

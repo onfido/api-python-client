@@ -30,11 +30,11 @@ import unittest
 
 import onfido
 from onfido.rest import ApiException
-from onfido.models.report_type import ReportType
+from onfido.models.live_photos_list import LivePhotosList
 
 
-class TestReportType(unittest.TestCase):
-    """ ReportType unit test stubs """
+class TestLivePhotosList(unittest.TestCase):
+    """ LivePhotosList unit test stubs """
 
     def setUp(self):
         pass
@@ -42,11 +42,11 @@ class TestReportType(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testReportType(self):
+    def testLivePhotosList(self):
         """
-        Test ReportType
+        Test LivePhotosList
         """
-        model = onfido.models.report_type.ReportType()
+        model = onfido.models.live_photos_list.LivePhotosList()
 
 
 if __name__ == '__main__':

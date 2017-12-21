@@ -3,7 +3,7 @@
 """
     Onfido API
 
-    The Onfido API is used to submit background checking requests
+    The Onfido API is used to submit check requests.
 
     OpenAPI spec version: 2.0.0
     
@@ -26,7 +26,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "onfido"
-VERSION = "1.0.1"
+VERSION = "1.1.0"
 
 # To install the library, run the following
 #
@@ -48,7 +48,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     long_description="""\
-    The Onfido API is used to submit background checking requests
+    The Onfido API is used to submit check requests.
     """
 )
 

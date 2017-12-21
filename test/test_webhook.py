@@ -30,11 +30,11 @@ import unittest
 
 import onfido
 from onfido.rest import ApiException
-from onfido.models.report_type import ReportType
+from onfido.models.webhook import Webhook
 
 
-class TestReportType(unittest.TestCase):
-    """ ReportType unit test stubs """
+class TestWebhook(unittest.TestCase):
+    """ Webhook unit test stubs """
 
     def setUp(self):
         pass
@@ -42,11 +42,11 @@ class TestReportType(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testReportType(self):
+    def testWebhook(self):
         """
-        Test ReportType
+        Test Webhook
         """
-        model = onfido.models.report_type.ReportType()
+        model = onfido.models.webhook.Webhook()
 
 
 if __name__ == '__main__':

@@ -30,11 +30,11 @@ import unittest
 
 import onfido
 from onfido.rest import ApiException
-from onfido.models.report_type import ReportType
+from onfido.models.generic_address import GenericAddress
 
 
-class TestReportType(unittest.TestCase):
-    """ ReportType unit test stubs """
+class TestGenericAddress(unittest.TestCase):
+    """ GenericAddress unit test stubs """
 
     def setUp(self):
         pass
@@ -42,11 +42,11 @@ class TestReportType(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testReportType(self):
+    def testGenericAddress(self):
         """
-        Test ReportType
+        Test GenericAddress
         """
-        model = onfido.models.report_type.ReportType()
+        model = onfido.models.generic_address.GenericAddress()
 
 
 if __name__ == '__main__':

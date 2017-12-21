@@ -3,7 +3,7 @@
 """
     Onfido API
 
-    The Onfido API is used to submit background checking requests
+    The Onfido API is used to submit check requests.
 
     OpenAPI spec version: 2.0.0
     
@@ -233,5 +233,5 @@ class Configuration(object):
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 2.0.0\n"\
-               "SDK Package Version: 1.0.1".\
+               "SDK Package Version: 1.1.0".\
                format(env=sys.platform, pyversion=sys.version)

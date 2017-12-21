@@ -3,7 +3,7 @@
 """
     Onfido API
 
-    The Onfido API is used to submit background checking requests
+    The Onfido API is used to submit check requests.
 
     OpenAPI spec version: 2.0.0
     
@@ -66,6 +66,14 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_create_webhook(self):
+        """
+        Test case for create_webhook
+
+        Create a webhook
+        """
+        pass
+
     def test_destroy_applicant(self):
         """
         Test case for destroy_applicant
@@ -79,6 +87,22 @@ class TestDefaultApi(unittest.TestCase):
         Test case for download_document
 
         Download a documents raw data
+        """
+        pass
+
+    def test_download_live_photo(self):
+        """
+        Test case for download_live_photo
+
+        Download live photo
+        """
+        pass
+
+    def test_find_addresses(self):
+        """
+        Test case for find_addresses
+
+        Search for addresses by postcode
         """
         pass
 
@@ -106,6 +130,14 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_find_live_photo(self):
+        """
+        Test case for find_live_photo
+
+        Retrieve live photo
+        """
+        pass
+
     def test_find_report(self):
         """
         Test case for find_report
@@ -119,6 +151,14 @@ class TestDefaultApi(unittest.TestCase):
         Test case for find_report_type_group
 
         Retrieve single report type group object
+        """
+        pass
+
+    def test_find_webhook(self):
+        """
+        Test case for find_webhook
+
+        Retrieve a Webhook
         """
         pass
 
@@ -146,6 +186,14 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_list_live_photos(self):
+        """
+        Test case for list_live_photos
+
+        List live photos
+        """
+        pass
+
     def test_list_report_type_groups(self):
         """
         Test case for list_report_type_groups
@@ -159,6 +207,14 @@ class TestDefaultApi(unittest.TestCase):
         Test case for list_reports
 
         All the reports belonging to a particular check can be listed from this endpoint.
+        """
+        pass
+
+    def test_list_webhooks(self):
+        """
+        Test case for list_webhooks
+
+        List webhooks
         """
         pass
 
@@ -191,6 +247,14 @@ class TestDefaultApi(unittest.TestCase):
         Test case for upload_document
 
         Upload a document
+        """
+        pass
+
+    def test_upload_live_photo(self):
+        """
+        Test case for upload_live_photo
+
+        Upload live photo
         """
         pass
 

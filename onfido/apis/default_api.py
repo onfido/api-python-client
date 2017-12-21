@@ -3,7 +3,7 @@
 """
     Onfido API
 
-    The Onfido API is used to submit background checking requests
+    The Onfido API is used to submit check requests.
 
     OpenAPI spec version: 2.0.0
     
@@ -389,6 +389,113 @@ class DefaultApi(object):
                                             _preload_content=params.get('_preload_content', True),
                                             collection_formats=collection_formats)
 
+    def create_webhook(self, **kwargs):
+        """
+        Create a webhook
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.create_webhook(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param Webhook data: 
+        :return: Webhook
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.create_webhook_with_http_info(**kwargs)
+        else:
+            (data) = self.create_webhook_with_http_info(**kwargs)
+            return data
+
+    def create_webhook_with_http_info(self, **kwargs):
+        """
+        Create a webhook
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.create_webhook_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param Webhook data: 
+        :return: Webhook
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['data']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method create_webhook" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+
+        collection_formats = {}
+
+        resource_path = '/webhooks'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        if 'data' in params:
+            body_params = params['data']
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type([])
+
+        # Authentication setting
+        auth_settings = ['Token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Webhook',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'),
+                                            _preload_content=params.get('_preload_content', True),
+                                            collection_formats=collection_formats)
+
     def destroy_applicant(self, applicant_id, **kwargs):
         """
         Delete Applicant
@@ -610,6 +717,226 @@ class DefaultApi(object):
                                             post_params=form_params,
                                             files=local_var_files,
                                             response_type='file',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'),
+                                            _preload_content=params.get('_preload_content', True),
+                                            collection_formats=collection_formats)
+
+    def download_live_photo(self, live_photo_id, **kwargs):
+        """
+        Download live photo
+        Live photos are downloaded using this endpoint.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.download_live_photo(live_photo_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str live_photo_id: The live photo’s unique identifier. (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.download_live_photo_with_http_info(live_photo_id, **kwargs)
+        else:
+            (data) = self.download_live_photo_with_http_info(live_photo_id, **kwargs)
+            return data
+
+    def download_live_photo_with_http_info(self, live_photo_id, **kwargs):
+        """
+        Download live photo
+        Live photos are downloaded using this endpoint.
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.download_live_photo_with_http_info(live_photo_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str live_photo_id: The live photo’s unique identifier. (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['live_photo_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method download_live_photo" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'live_photo_id' is set
+        if ('live_photo_id' not in params) or (params['live_photo_id'] is None):
+            raise ValueError("Missing the required parameter `live_photo_id` when calling `download_live_photo`")
+
+
+        collection_formats = {}
+
+        resource_path = '/live_photos/{live_photo_id}/download'.replace('{format}', 'json')
+        path_params = {}
+        if 'live_photo_id' in params:
+            path_params['live_photo_id'] = params['live_photo_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type([])
+
+        # Authentication setting
+        auth_settings = ['Token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='file',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'),
+                                            _preload_content=params.get('_preload_content', True),
+                                            collection_formats=collection_formats)
+
+    def find_addresses(self, postcode, **kwargs):
+        """
+        Search for addresses by postcode
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.find_addresses(postcode, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str postcode:  (required)
+        :return: GenericAddressesList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.find_addresses_with_http_info(postcode, **kwargs)
+        else:
+            (data) = self.find_addresses_with_http_info(postcode, **kwargs)
+            return data
+
+    def find_addresses_with_http_info(self, postcode, **kwargs):
+        """
+        Search for addresses by postcode
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.find_addresses_with_http_info(postcode, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str postcode:  (required)
+        :return: GenericAddressesList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['postcode']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method find_addresses" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'postcode' is set
+        if ('postcode' not in params) or (params['postcode'] is None):
+            raise ValueError("Missing the required parameter `postcode` when calling `find_addresses`")
+
+
+        collection_formats = {}
+
+        resource_path = '/addresses/pick'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'postcode' in params:
+            query_params['postcode'] = params['postcode']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type([])
+
+        # Authentication setting
+        auth_settings = ['Token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='GenericAddressesList',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'),
@@ -960,6 +1287,116 @@ class DefaultApi(object):
                                             _preload_content=params.get('_preload_content', True),
                                             collection_formats=collection_formats)
 
+    def find_live_photo(self, live_photo_id, **kwargs):
+        """
+        Retrieve live photo
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.find_live_photo(live_photo_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str live_photo_id: The live photo’s unique identifier. (required)
+        :return: LivePhoto
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.find_live_photo_with_http_info(live_photo_id, **kwargs)
+        else:
+            (data) = self.find_live_photo_with_http_info(live_photo_id, **kwargs)
+            return data
+
+    def find_live_photo_with_http_info(self, live_photo_id, **kwargs):
+        """
+        Retrieve live photo
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.find_live_photo_with_http_info(live_photo_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str live_photo_id: The live photo’s unique identifier. (required)
+        :return: LivePhoto
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['live_photo_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method find_live_photo" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'live_photo_id' is set
+        if ('live_photo_id' not in params) or (params['live_photo_id'] is None):
+            raise ValueError("Missing the required parameter `live_photo_id` when calling `find_live_photo`")
+
+
+        collection_formats = {}
+
+        resource_path = '/live_photos/{live_photo_id}'.replace('{format}', 'json')
+        path_params = {}
+        if 'live_photo_id' in params:
+            path_params['live_photo_id'] = params['live_photo_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type([])
+
+        # Authentication setting
+        auth_settings = ['Token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='LivePhoto',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'),
+                                            _preload_content=params.get('_preload_content', True),
+                                            collection_formats=collection_formats)
+
     def find_report(self, check_id, report_id, **kwargs):
         """
         A single report can be retrieved using this endpoint with the corresponding unique identifier.
@@ -1181,6 +1618,116 @@ class DefaultApi(object):
                                             post_params=form_params,
                                             files=local_var_files,
                                             response_type='ReportTypeGroup',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'),
+                                            _preload_content=params.get('_preload_content', True),
+                                            collection_formats=collection_formats)
+
+    def find_webhook(self, webhook_id, **kwargs):
+        """
+        Retrieve a Webhook
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.find_webhook(webhook_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str webhook_id:  (required)
+        :return: Webhook
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.find_webhook_with_http_info(webhook_id, **kwargs)
+        else:
+            (data) = self.find_webhook_with_http_info(webhook_id, **kwargs)
+            return data
+
+    def find_webhook_with_http_info(self, webhook_id, **kwargs):
+        """
+        Retrieve a Webhook
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.find_webhook_with_http_info(webhook_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str webhook_id:  (required)
+        :return: Webhook
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['webhook_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method find_webhook" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'webhook_id' is set
+        if ('webhook_id' not in params) or (params['webhook_id'] is None):
+            raise ValueError("Missing the required parameter `webhook_id` when calling `find_webhook`")
+
+
+        collection_formats = {}
+
+        resource_path = '/webhooks/{webhook_id}'.replace('{format}', 'json')
+        path_params = {}
+        if 'webhook_id' in params:
+            path_params['webhook_id'] = params['webhook_id']
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type([])
+
+        # Authentication setting
+        auth_settings = ['Token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='Webhook',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'),
@@ -1510,6 +2057,116 @@ class DefaultApi(object):
                                             _preload_content=params.get('_preload_content', True),
                                             collection_formats=collection_formats)
 
+    def list_live_photos(self, applicant_id, **kwargs):
+        """
+        List live photos
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_live_photos(applicant_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str applicant_id: The id of the applicant the live photos belongs to. (required)
+        :return: LivePhotosList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_live_photos_with_http_info(applicant_id, **kwargs)
+        else:
+            (data) = self.list_live_photos_with_http_info(applicant_id, **kwargs)
+            return data
+
+    def list_live_photos_with_http_info(self, applicant_id, **kwargs):
+        """
+        List live photos
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_live_photos_with_http_info(applicant_id, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str applicant_id: The id of the applicant the live photos belongs to. (required)
+        :return: LivePhotosList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['applicant_id']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_live_photos" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'applicant_id' is set
+        if ('applicant_id' not in params) or (params['applicant_id'] is None):
+            raise ValueError("Missing the required parameter `applicant_id` when calling `list_live_photos`")
+
+
+        collection_formats = {}
+
+        resource_path = '/live_photos'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+        if 'applicant_id' in params:
+            query_params['applicant_id'] = params['applicant_id']
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type([])
+
+        # Authentication setting
+        auth_settings = ['Token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='LivePhotosList',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'),
+                                            _preload_content=params.get('_preload_content', True),
+                                            collection_formats=collection_formats)
+
     def list_report_type_groups(self, **kwargs):
         """
         Retrieve all report type groups
@@ -1717,6 +2374,109 @@ class DefaultApi(object):
                                             post_params=form_params,
                                             files=local_var_files,
                                             response_type='ReportsList',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'),
+                                            _preload_content=params.get('_preload_content', True),
+                                            collection_formats=collection_formats)
+
+    def list_webhooks(self, **kwargs):
+        """
+        List webhooks
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_webhooks(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :return: WebhooksList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.list_webhooks_with_http_info(**kwargs)
+        else:
+            (data) = self.list_webhooks_with_http_info(**kwargs)
+            return data
+
+    def list_webhooks_with_http_info(self, **kwargs):
+        """
+        List webhooks
+        
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.list_webhooks_with_http_info(callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :return: WebhooksList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_webhooks" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+
+        collection_formats = {}
+
+        resource_path = '/webhooks'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type([])
+
+        # Authentication setting
+        auth_settings = ['Token']
+
+        return self.api_client.call_api(resource_path, 'GET',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='WebhooksList',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'),
@@ -2183,6 +2943,127 @@ class DefaultApi(object):
                                             post_params=form_params,
                                             files=local_var_files,
                                             response_type='Document',
+                                            auth_settings=auth_settings,
+                                            callback=params.get('callback'),
+                                            _return_http_data_only=params.get('_return_http_data_only'),
+                                            _preload_content=params.get('_preload_content', True),
+                                            collection_formats=collection_formats)
+
+    def upload_live_photo(self, applicant_id, file, **kwargs):
+        """
+        Upload live photo
+        You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.upload_live_photo(applicant_id, file, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str applicant_id: The applicant_id to associate the live photo to. (required)
+        :param file file: The file to be uploaded. (required)
+        :param bool advanced_validation: Validates that the live photo contains exactly one face.
+        :return: LivePhoto
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('callback'):
+            return self.upload_live_photo_with_http_info(applicant_id, file, **kwargs)
+        else:
+            (data) = self.upload_live_photo_with_http_info(applicant_id, file, **kwargs)
+            return data
+
+    def upload_live_photo_with_http_info(self, applicant_id, file, **kwargs):
+        """
+        Upload live photo
+        You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please define a `callback` function
+        to be invoked when receiving the response.
+        >>> def callback_function(response):
+        >>>     pprint(response)
+        >>>
+        >>> thread = api.upload_live_photo_with_http_info(applicant_id, file, callback=callback_function)
+
+        :param callback function: The callback function
+            for asynchronous request. (optional)
+        :param str applicant_id: The applicant_id to associate the live photo to. (required)
+        :param file file: The file to be uploaded. (required)
+        :param bool advanced_validation: Validates that the live photo contains exactly one face.
+        :return: LivePhoto
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = ['applicant_id', 'file', 'advanced_validation']
+        all_params.append('callback')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+
+        params = locals()
+        for key, val in iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method upload_live_photo" % key
+                )
+            params[key] = val
+        del params['kwargs']
+        # verify the required parameter 'applicant_id' is set
+        if ('applicant_id' not in params) or (params['applicant_id'] is None):
+            raise ValueError("Missing the required parameter `applicant_id` when calling `upload_live_photo`")
+        # verify the required parameter 'file' is set
+        if ('file' not in params) or (params['file'] is None):
+            raise ValueError("Missing the required parameter `file` when calling `upload_live_photo`")
+
+
+        collection_formats = {}
+
+        resource_path = '/live_photos'.replace('{format}', 'json')
+        path_params = {}
+
+        query_params = {}
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+        if 'applicant_id' in params:
+            form_params.append(('applicant_id', params['applicant_id']))
+        if 'file' in params:
+            local_var_files['file'] = params['file']
+        if 'advanced_validation' in params:
+            form_params.append(('advanced_validation', params['advanced_validation']))
+
+        body_params = None
+
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.\
+            select_header_accept(['application/json'])
+        if not header_params['Accept']:
+            del header_params['Accept']
+
+        # HTTP header `Content-Type`
+        header_params['Content-Type'] = self.api_client.\
+            select_header_content_type(['multipart/form-data'])
+
+        # Authentication setting
+        auth_settings = ['Token']
+
+        return self.api_client.call_api(resource_path, 'POST',
+                                            path_params,
+                                            query_params,
+                                            header_params,
+                                            body=body_params,
+                                            post_params=form_params,
+                                            files=local_var_files,
+                                            response_type='LivePhoto',
                                             auth_settings=auth_settings,
                                             callback=params.get('callback'),
                                             _return_http_data_only=params.get('_return_http_data_only'),
