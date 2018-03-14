@@ -81,7 +81,7 @@ check.type = 'express'
 report = onfido.Report()
 report.name = 'identity'
 
-check.reports = [report];
+check.reports = [report]
 
 try: 
     # Create Applicant
