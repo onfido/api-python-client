@@ -26,7 +26,7 @@ import sys
 from setuptools import setup, find_packages
 
 NAME = "onfido"
-VERSION = "1.1.1"
+VERSION = "1.2.0"
 
 # To install the library, run the following
 #
