@@ -631,7 +631,7 @@ Name | Type | Description  | Notes
 [**Webhook**](Webhook.md)
 
 # **list_applicants**
-> ApplicantsList list_applicants()
+> ApplicantsList list_applicants(page=page, per_page=per_page)
 
 List Applicants
 
@@ -649,24 +649,30 @@ onfido.configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi()
+page = 'page_example' # str | The page to return. Defaults to the first page if omitted. The first page is `page=1` (optional)
+per_page = 'per_page_example' # str | The number of objects per page. Defaults to 20 if omitted. (optional)
 
 try: 
     # List Applicants
-    api_response = api_instance.list_applicants()
+    api_response = api_instance.list_applicants(page=page, per_page=per_page)
     pprint(api_response)
 except ApiException as e:
     pprint(e.body)
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **page** | **str**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional] 
+ **per_page** | **str**| The number of objects per page. Defaults to 20 if omitted. | [optional] 
 
 ### Return type
 
 [**ApplicantsList**](ApplicantsList.md)
 
 # **list_checks**
-> ChecksList list_checks(applicant_id)
+> ChecksList list_checks(applicant_id, page=page, per_page=per_page)
 
 Retrieve Checks
 
@@ -685,10 +691,12 @@ onfido.configuration.api_key_prefix['Authorization'] = 'Token'
 # create an instance of the API class
 api_instance = onfido.DefaultApi()
 applicant_id = 'applicant_id_example' # str | 
+page = 'page_example' # str | The page to return. Defaults to the first page if omitted. The first page is `page=1` (optional)
+per_page = 'per_page_example' # str | The number of objects per page. Defaults to 20 if omitted. (optional)
 
 try: 
     # Retrieve Checks
-    api_response = api_instance.list_checks(applicant_id)
+    api_response = api_instance.list_checks(applicant_id, page=page, per_page=per_page)
     pprint(api_response)
 except ApiException as e:
     pprint(e.body)
@@ -699,6 +707,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicant_id** | **str**|  | 
+ **page** | **str**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional] 
+ **per_page** | **str**| The number of objects per page. Defaults to 20 if omitted. | [optional] 
 
 ### Return type
 

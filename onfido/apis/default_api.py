@@ -1749,6 +1749,8 @@ class DefaultApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str page: The page to return. Defaults to the first page if omitted. The first page is `page=1`
+        :param str per_page: The number of objects per page. Defaults to 20 if omitted.
         :return: ApplicantsList
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1775,12 +1777,14 @@ class DefaultApi(object):
 
         :param callback function: The callback function
             for asynchronous request. (optional)
+        :param str page: The page to return. Defaults to the first page if omitted. The first page is `page=1`
+        :param str per_page: The number of objects per page. Defaults to 20 if omitted.
         :return: ApplicantsList
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = []
+        all_params = ['page', 'per_page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1802,6 +1806,10 @@ class DefaultApi(object):
         path_params = {}
 
         query_params = {}
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'per_page' in params:
+            query_params['per_page'] = params['per_page']
 
         header_params = {}
 
@@ -1853,6 +1861,8 @@ class DefaultApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str applicant_id:  (required)
+        :param str page: The page to return. Defaults to the first page if omitted. The first page is `page=1`
+        :param str per_page: The number of objects per page. Defaults to 20 if omitted.
         :return: ChecksList
                  If the method is called asynchronously,
                  returns the request thread.
@@ -1880,12 +1890,14 @@ class DefaultApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str applicant_id:  (required)
+        :param str page: The page to return. Defaults to the first page if omitted. The first page is `page=1`
+        :param str per_page: The number of objects per page. Defaults to 20 if omitted.
         :return: ChecksList
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['applicant_id']
+        all_params = ['applicant_id', 'page', 'per_page']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -1912,6 +1924,10 @@ class DefaultApi(object):
             path_params['applicant_id'] = params['applicant_id']
 
         query_params = {}
+        if 'page' in params:
+            query_params['page'] = params['page']
+        if 'per_page' in params:
+            query_params['per_page'] = params['per_page']
 
         header_params = {}
 
