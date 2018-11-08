@@ -54,11 +54,11 @@ class ApiClient(object):
     Ref: https://github.com/swagger-api/swagger-codegen
     Do not edit the class manually.
 
-    :param host: The base path for the server to call.
+    :param region: The region for the server to target.
     :param header_name: a header to pass when making calls to the API.
     :param header_value: a header value to pass when making calls to the API.
     """
-    def __init__(self, host=None, header_name=None, header_value=None, cookie=None):
+    def __init__(self, region=None, header_name=None, header_value=None, cookie=None):
 
         """
         Constructor of the class.
@@ -67,13 +67,11 @@ class ApiClient(object):
         self.default_headers = {}
         if header_name is not None:
             self.default_headers[header_name] = header_value
-        if host is None:
-            self.host = Configuration().host
-        else:
-            self.host = host
+        if region is not None:
+            Configuration().region = region
         self.cookie = cookie
         # Set default User-Agent.
-        self.user_agent = 'Swagger-Codegen/1.3.0/python'
+        self.user_agent = 'Swagger-Codegen/1.4.0/python'
 
     @property
     def user_agent(self):
@@ -137,8 +135,19 @@ class ApiClient(object):
         if body:
             body = self.sanitize_for_serialization(body)
 
+        config = Configuration()
+        region = config.region.lower() if config.region else 'default'
+        region_hosts = {
+            'us': 'https://api.onfido.com/v2'.replace('api.onfido', 'api.us.onfido'),
+            'default': 'https://api.onfido.com/v2'
+        }
+        try:
+            host = region_hosts[region]
+        except KeyError:
+            raise LookupError('The region "{}" is not currently supported'.format(region))
+
         # request url
-        url = self.host + resource_path
+        url = host + resource_path
 
         # perform request and return response
         response_data = self.request(method, url,
