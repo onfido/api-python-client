@@ -218,6 +218,14 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_restore_applicant(self):
+        """
+        Test case for restore_applicant
+
+        Restore Applicant
+        """
+        pass
+
     def test_resume_check(self):
         """
         Test case for resume_check

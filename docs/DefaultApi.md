@@ -26,6 +26,7 @@ Method | HTTP request | Description
 [**list_report_type_groups**](DefaultApi.md#list_report_type_groups) | **GET** /report_type_groups | Retrieve all report type groups
 [**list_reports**](DefaultApi.md#list_reports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
 [**list_webhooks**](DefaultApi.md#list_webhooks) | **GET** /webhooks | List webhooks
+[**restore_applicant**](DefaultApi.md#restore_applicant) | **POST** /applicants/{applicant_id}/restore | Restore Applicant
 [**resume_check**](DefaultApi.md#resume_check) | **POST** /checks/{check_id}/resume | Resume a Check
 [**resume_report**](DefaultApi.md#resume_report) | **POST** /checks/{check_id}/reports/{report_id}/resume | This endpoint is for resuming individual paused reports.
 [**update_applicant**](DefaultApi.md#update_applicant) | **PUT** /applicants/{applicant_id} | Update Applicant
@@ -631,7 +632,7 @@ Name | Type | Description  | Notes
 [**Webhook**](Webhook.md)
 
 # **list_applicants**
-> ApplicantsList list_applicants(page=page, per_page=per_page)
+> ApplicantsList list_applicants(page=page, per_page=per_page, include_deleted=include_deleted)
 
 List Applicants
 
@@ -649,12 +650,13 @@ onfido.configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi()
-page = 'page_example' # str | The page to return. Defaults to the first page if omitted. The first page is `page=1` (optional)
-per_page = 'per_page_example' # str | The number of objects per page. Defaults to 20 if omitted. (optional)
+page = 56 # int | The page to return. Defaults to the first page if omitted. The first page is `page=1` (optional)
+per_page = 56 # int | The number of objects per page. Defaults to 20 if omitted. (optional)
+include_deleted = true # bool | Whether to also include applicants scheduled for deletion. Defaults to false if omitted. (optional)
 
 try: 
     # List Applicants
-    api_response = api_instance.list_applicants(page=page, per_page=per_page)
+    api_response = api_instance.list_applicants(page=page, per_page=per_page, include_deleted=include_deleted)
     pprint(api_response)
 except ApiException as e:
     pprint(e.body)
@@ -664,8 +666,9 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **str**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional] 
- **per_page** | **str**| The number of objects per page. Defaults to 20 if omitted. | [optional] 
+ **page** | **int**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional] 
+ **per_page** | **int**| The number of objects per page. Defaults to 20 if omitted. | [optional] 
+ **include_deleted** | **bool**| Whether to also include applicants scheduled for deletion. Defaults to false if omitted. | [optional] 
 
 ### Return type
 
@@ -691,8 +694,8 @@ onfido.configuration.api_key_prefix['Authorization'] = 'Token'
 # create an instance of the API class
 api_instance = onfido.DefaultApi()
 applicant_id = 'applicant_id_example' # str | 
-page = 'page_example' # str | The page to return. Defaults to the first page if omitted. The first page is `page=1` (optional)
-per_page = 'per_page_example' # str | The number of objects per page. Defaults to 20 if omitted. (optional)
+page = 56 # int | The page to return. Defaults to the first page if omitted. The first page is `page=1` (optional)
+per_page = 56 # int | The number of objects per page. Defaults to 20 if omitted. (optional)
 
 try: 
     # Retrieve Checks
@@ -707,8 +710,8 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicant_id** | **str**|  | 
- **page** | **str**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional] 
- **per_page** | **str**| The number of objects per page. Defaults to 20 if omitted. | [optional] 
+ **page** | **int**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional] 
+ **per_page** | **int**| The number of objects per page. Defaults to 20 if omitted. | [optional] 
 
 ### Return type
 
@@ -902,6 +905,44 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**WebhooksList**](WebhooksList.md)
+
+# **restore_applicant**
+> restore_applicant(applicant_id)
+
+Restore Applicant
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+applicant_id = 'applicant_id_example' # str | 
+
+try: 
+    # Restore Applicant
+    api_instance.restore_applicant(applicant_id)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicant_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
 
 # **resume_check**
 > resume_check(check_id)

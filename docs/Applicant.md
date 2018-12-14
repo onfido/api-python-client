@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **str** | The unique identifier for the applicant | [optional] 
 **created_at** | **datetime** | The date and time when this applicant was created | [optional] 
+**delete_at** | **datetime** | The date and time when this applicant is scheduled to be deleted, or null if the applicant is not scheduled to be deleted | [optional] 
 **href** | **str** | The uri of this resource | [optional] 
 **title** | **str** | The applicant’s title | [optional] 
 **first_name** | **str** | The applicant’s first name | 
