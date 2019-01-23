@@ -3099,7 +3099,8 @@ class DefaultApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str applicant_id: The applicant_id to associate the live photo to. (required)
-        :param file file: The file to be uploaded. (required)
+        :param file file: The file to be uploaded. (required if no file_object)
+        :param file_object file_object: tuple of (filename, filedata, mimetype)
         :param bool advanced_validation: Validates that the live photo contains exactly one face.
         :return: LivePhoto
                  If the method is called asynchronously,
@@ -3128,14 +3129,15 @@ class DefaultApi(object):
         :param callback function: The callback function
             for asynchronous request. (optional)
         :param str applicant_id: The applicant_id to associate the live photo to. (required)
-        :param file file: The file to be uploaded. (required)
+        :param file file: The file to be uploaded. (required if no file_object)
+        :param file_object file_object: tuple of (filename, filedata, mimetype)
         :param bool advanced_validation: Validates that the live photo contains exactly one face.
         :return: LivePhoto
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['applicant_id', 'file', 'advanced_validation']
+        all_params = ['applicant_id', 'file', 'file_object', 'advanced_validation']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3154,7 +3156,8 @@ class DefaultApi(object):
             raise ValueError("Missing the required parameter `applicant_id` when calling `upload_live_photo`")
         # verify the required parameter 'file' is set
         if ('file' not in params) or (params['file'] is None):
-            raise ValueError("Missing the required parameter `file` when calling `upload_live_photo`")
+            if ('file_object' not in params) or (params['file_object'] is None):
+            raise ValueError("Missing the required parameter `file` or `file_object` when calling `upload_live_photo`")
 
 
         collection_formats = {}
@@ -3172,6 +3175,8 @@ class DefaultApi(object):
             form_params.append(('applicant_id', params['applicant_id']))
         if 'file' in params:
             local_var_files['file'] = params['file']
+        if 'file_object' in params:
+            local_var_files['file_object'] = params['file_object']
         if 'advanced_validation' in params:
             form_params.append(('advanced_validation', params['advanced_validation']))
 
