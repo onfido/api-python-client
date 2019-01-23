@@ -2972,7 +2972,8 @@ class DefaultApi(object):
         :param str applicant_id:  (required)
         :param str type:  (required)
         :param str side: 
-        :param file file: 
+        :param file file:
+        :param file_object file_object: tuple of (filename, filedata, mimetype)
         :return: Document
                  If the method is called asynchronously,
                  returns the request thread.
@@ -3002,13 +3003,14 @@ class DefaultApi(object):
         :param str applicant_id:  (required)
         :param str type:  (required)
         :param str side: 
-        :param file file: 
+        :param file file:
+        :param file_object file_object: tuple of (filename, filedata, mimetype)
         :return: Document
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['applicant_id', 'type', 'side', 'file']
+        all_params = ['applicant_id', 'type', 'side', 'file', 'file_object']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3049,6 +3051,8 @@ class DefaultApi(object):
             form_params.append(('side', params['side']))
         if 'file' in params:
             local_var_files['file'] = params['file']
+        if 'file_object' in params:
+            local_var_files['file_object'] = params['file_object']
 
         body_params = None
 
