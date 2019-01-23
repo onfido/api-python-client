@@ -3157,7 +3157,7 @@ class DefaultApi(object):
         # verify the required parameter 'file' is set
         if ('file' not in params) or (params['file'] is None):
             if ('file_object' not in params) or (params['file_object'] is None):
-    		raise ValueError("Missing the required parameter `file` or `file_object` when calling `upload_live_photo`")
+                raise ValueError("Missing the required parameter `file` or `file_object` when calling `upload_live_photo`")
 
 
         collection_formats = {}
