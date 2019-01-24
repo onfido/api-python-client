@@ -3010,7 +3010,7 @@ class DefaultApi(object):
                  returns the request thread.
         """
 
-        all_params = ['applicant_id', 'type', 'side', 'file', 'file_object']
+        all_params = ['applicant_id', 'type', 'side', 'file', 'file_object', 'issuing_country']
         all_params.append('callback')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3049,6 +3049,8 @@ class DefaultApi(object):
             form_params.append(('type', params['type']))
         if 'side' in params:
             form_params.append(('side', params['side']))
+        if 'issuing_country' in params:
+            form_params.append(('issuing_country', params['issuing_country']))
         if 'file' in params:
             local_var_files['file'] = params['file']
         if 'file_object' in params:
