@@ -22,33 +22,32 @@
     limitations under the License.
 """
 
+from __future__ import absolute_import
+
+import os
 import sys
-from setuptools import setup, find_packages
+import unittest
 
-NAME = "onfido"
-VERSION = "1.6.0"
+import onfido
+from onfido.rest import ApiException
+from onfido.models.live_videos_list import LiveVideosList
 
-# To install the library, run the following
-#
-# python setup.py install
-#
-# prerequisite: setuptools
-# http://pypi.python.org/pypi/setuptools
 
-REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
+class TestLiveVideosList(unittest.TestCase):
+    """ LiveVideosList unit test stubs """
 
-setup(
-    name=NAME,
-    version=VERSION,
-    description="Onfido API",
-    author_email="",
-    url="",
-    keywords=["Swagger", "Onfido API"],
-    install_requires=REQUIRES,
-    packages=find_packages(),
-    include_package_data=True,
-    long_description="""\
-    The Onfido API is used to submit check requests.
-    """
-)
+    def setUp(self):
+        pass
 
+    def tearDown(self):
+        pass
+
+    def testLiveVideosList(self):
+        """
+        Test LiveVideosList
+        """
+        model = onfido.models.live_videos_list.LiveVideosList()
+
+
+if __name__ == '__main__':
+    unittest.main()

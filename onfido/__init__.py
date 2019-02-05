@@ -39,6 +39,8 @@ from .models.generic_addresses_list import GenericAddressesList
 from .models.id_number import IdNumber
 from .models.live_photo import LivePhoto
 from .models.live_photos_list import LivePhotosList
+from .models.live_video import LiveVideo
+from .models.live_videos_list import LiveVideosList
 from .models.report import Report
 from .models.report_type import ReportType
 from .models.report_type_group import ReportTypeGroup

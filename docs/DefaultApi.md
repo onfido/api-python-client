@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**find_check**](DefaultApi.md#find_check) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
 [**find_document**](DefaultApi.md#find_document) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 [**find_live_photo**](DefaultApi.md#find_live_photo) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
+[**find_live_video**](DefaultApi.md#find_live_video) | **GET** /live_videos/{live_video_id} | Retrieve live video
 [**find_report**](DefaultApi.md#find_report) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 [**find_report_type_group**](DefaultApi.md#find_report_type_group) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
 [**find_webhook**](DefaultApi.md#find_webhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
@@ -23,6 +24,7 @@ Method | HTTP request | Description
 [**list_checks**](DefaultApi.md#list_checks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 [**list_documents**](DefaultApi.md#list_documents) | **GET** /applicants/{applicant_id}/documents | List documents
 [**list_live_photos**](DefaultApi.md#list_live_photos) | **GET** /live_photos | List live photos
+[**list_live_videos**](DefaultApi.md#list_live_videos) | **GET** /live_videos | List live videos
 [**list_report_type_groups**](DefaultApi.md#list_report_type_groups) | **GET** /report_type_groups | Retrieve all report type groups
 [**list_reports**](DefaultApi.md#list_reports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
 [**list_webhooks**](DefaultApi.md#list_webhooks) | **GET** /webhooks | List webhooks
@@ -512,6 +514,45 @@ Name | Type | Description  | Notes
 
 [**LivePhoto**](LivePhoto.md)
 
+# **find_live_video**
+> LiveVideo find_live_video(live_video_id)
+
+Retrieve live video
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+live_video_id = 'live_video_id_example' # str | The live video’s unique identifier.
+
+try: 
+    # Retrieve live video
+    api_response = api_instance.find_live_video(live_video_id)
+    pprint(api_response)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **live_video_id** | **str**| The live video’s unique identifier. | 
+
+### Return type
+
+[**LiveVideo**](LiveVideo.md)
+
 # **find_report**
 > Report find_report(check_id, report_id)
 
@@ -777,7 +818,7 @@ onfido.configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi()
-applicant_id = 'applicant_id_example' # str | The id of the applicant the live photos belongs to.
+applicant_id = 'applicant_id_example' # str | The id of the applicant the live photos belong to.
 
 try: 
     # List live photos
@@ -791,11 +832,50 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicant_id** | **str**| The id of the applicant the live photos belongs to. | 
+ **applicant_id** | **str**| The id of the applicant the live photos belong to. | 
 
 ### Return type
 
 [**LivePhotosList**](LivePhotosList.md)
+
+# **list_live_videos**
+> LiveVideosList list_live_videos(applicant_id)
+
+List live videos
+
+### Example 
+```python
+from __future__ import print_statement
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+
+# Configure API key authorization: Token
+onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
+onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi()
+applicant_id = 'applicant_id_example' # str | The id of the applicant the live videos belong to.
+
+try: 
+    # List live videos
+    api_response = api_instance.list_live_videos(applicant_id)
+    pprint(api_response)
+except ApiException as e:
+    pprint(e.body)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicant_id** | **str**| The id of the applicant the live videos belong to. | 
+
+### Return type
+
+[**LiveVideosList**](LiveVideosList.md)
 
 # **list_report_type_groups**
 > ReportTypeGroupsList list_report_type_groups()

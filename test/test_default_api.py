@@ -138,6 +138,14 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_find_live_video(self):
+        """
+        Test case for find_live_video
+
+        Retrieve live video
+        """
+        pass
+
     def test_find_report(self):
         """
         Test case for find_report
@@ -191,6 +199,14 @@ class TestDefaultApi(unittest.TestCase):
         Test case for list_live_photos
 
         List live photos
+        """
+        pass
+
+    def test_list_live_videos(self):
+        """
+        Test case for list_live_videos
+
+        List live videos
         """
         pass
 
