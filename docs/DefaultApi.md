@@ -16,7 +16,6 @@ Method | HTTP request | Description
 [**find_check**](DefaultApi.md#find_check) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
 [**find_document**](DefaultApi.md#find_document) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 [**find_live_photo**](DefaultApi.md#find_live_photo) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
-[**find_live_video**](DefaultApi.md#find_live_video) | **GET** /live_videos/{live_video_id} | Retrieve live video
 [**find_report**](DefaultApi.md#find_report) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 [**find_report_type_group**](DefaultApi.md#find_report_type_group) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
 [**find_webhook**](DefaultApi.md#find_webhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
@@ -24,7 +23,6 @@ Method | HTTP request | Description
 [**list_checks**](DefaultApi.md#list_checks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 [**list_documents**](DefaultApi.md#list_documents) | **GET** /applicants/{applicant_id}/documents | List documents
 [**list_live_photos**](DefaultApi.md#list_live_photos) | **GET** /live_photos | List live photos
-[**list_live_videos**](DefaultApi.md#list_live_videos) | **GET** /live_videos | List live videos
 [**list_report_type_groups**](DefaultApi.md#list_report_type_groups) | **GET** /report_type_groups | Retrieve all report type groups
 [**list_reports**](DefaultApi.md#list_reports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
 [**list_webhooks**](DefaultApi.md#list_webhooks) | **GET** /webhooks | List webhooks
@@ -41,28 +39,29 @@ Method | HTTP request | Description
 
 This endpoint is for cancelling individual paused reports.
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 check_id = 'check_id_example' # str | 
 report_id = 'report_id_example' # str | 
 
-try: 
+try:
     # This endpoint is for cancelling individual paused reports.
     api_instance.cancel_report(check_id, report_id)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->cancel_report: %s\n" % e)
 ```
 
 ### Parameters
@@ -76,73 +75,97 @@ Name | Type | Description  | Notes
 
 void (empty response body)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_applicant**
-> Applicant create_applicant(data=data)
+> Applicant create_applicant(applicant)
 
 Create Applicant
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
-data = onfido.Applicant() # Applicant |  (optional)
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
+applicant = onfido.Applicant() # Applicant | 
 
-try: 
+try:
     # Create Applicant
-    api_response = api_instance.create_applicant(data=data)
+    api_response = api_instance.create_applicant(applicant)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->create_applicant: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**Applicant**](Applicant.md)|  | [optional] 
+ **applicant** | [**Applicant**](Applicant.md)|  | 
 
 ### Return type
 
 [**Applicant**](Applicant.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_check**
-> Check create_check(applicant_id, data=data)
+> Check create_check(applicant_id, check)
 
 Create a check
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
-data = onfido.CheckCreationRequest() # CheckCreationRequest |  (optional)
+check = onfido.Check() # Check | 
 
-try: 
+try:
     # Create a check
-    api_response = api_instance.create_check(applicant_id, data=data)
+    api_response = api_instance.create_check(applicant_id, check)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->create_check: %s\n" % e)
 ```
 
 ### Parameters
@@ -150,77 +173,101 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicant_id** | **str**|  | 
- **data** | [**CheckCreationRequest**](CheckCreationRequest.md)|  | [optional] 
+ **check** | [**Check**](Check.md)|  | 
 
 ### Return type
 
 [**Check**](Check.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **create_webhook**
-> Webhook create_webhook(data=data)
+> Webhook create_webhook(webhook)
 
 Create a webhook
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
-data = onfido.Webhook() # Webhook |  (optional)
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
+webhook = onfido.Webhook() # Webhook | 
 
-try: 
+try:
     # Create a webhook
-    api_response = api_instance.create_webhook(data=data)
+    api_response = api_instance.create_webhook(webhook)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->create_webhook: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **data** | [**Webhook**](Webhook.md)|  | [optional] 
+ **webhook** | [**Webhook**](Webhook.md)|  | 
 
 ### Return type
 
 [**Webhook**](Webhook.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **destroy_applicant**
 > destroy_applicant(applicant_id)
 
 Delete Applicant
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
 
-try: 
+try:
     # Delete Applicant
     api_instance.destroy_applicant(applicant_id)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->destroy_applicant: %s\n" % e)
 ```
 
 ### Parameters
@@ -233,34 +280,46 @@ Name | Type | Description  | Notes
 
 void (empty response body)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **download_document**
 > file download_document(applicant_id, document_id)
 
 Download a documents raw data
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
 document_id = 'document_id_example' # str | 
 
-try: 
+try:
     # Download a documents raw data
     api_response = api_instance.download_document(applicant_id, document_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->download_document: %s\n" % e)
 ```
 
 ### Parameters
@@ -272,7 +331,18 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**file**](file.md)
+**file**
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_live_photo**
 > file download_live_photo(live_photo_id)
@@ -281,28 +351,29 @@ Download live photo
 
 Live photos are downloaded using this endpoint.
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 live_photo_id = 'live_photo_id_example' # str | The live photo’s unique identifier.
 
-try: 
+try:
     # Download live photo
     api_response = api_instance.download_live_photo(live_photo_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->download_live_photo: %s\n" % e)
 ```
 
 ### Parameters
@@ -313,35 +384,47 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**file**](file.md)
+**file**
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_addresses**
 > GenericAddressesList find_addresses(postcode)
 
 Search for addresses by postcode
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 postcode = 'postcode_example' # str | 
 
-try: 
+try:
     # Search for addresses by postcode
     api_response = api_instance.find_addresses(postcode)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->find_addresses: %s\n" % e)
 ```
 
 ### Parameters
@@ -354,33 +437,45 @@ Name | Type | Description  | Notes
 
 [**GenericAddressesList**](GenericAddressesList.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **find_applicant**
 > Applicant find_applicant(applicant_id)
 
 Retrieve Applicant
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
 
-try: 
+try:
     # Retrieve Applicant
     api_response = api_instance.find_applicant(applicant_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->find_applicant: %s\n" % e)
 ```
 
 ### Parameters
@@ -393,34 +488,46 @@ Name | Type | Description  | Notes
 
 [**Applicant**](Applicant.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **find_check**
-> Check find_check(applicant_id, check_id)
+> CheckWithReportIds find_check(applicant_id, check_id)
 
 Retrieve a Check
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
 check_id = 'check_id_example' # str | 
 
-try: 
+try:
     # Retrieve a Check
     api_response = api_instance.find_check(applicant_id, check_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->find_check: %s\n" % e)
 ```
 
 ### Parameters
@@ -432,36 +539,48 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**Check**](Check.md)
+[**CheckWithReportIds**](CheckWithReportIds.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_document**
 > Document find_document(applicant_id, document_id)
 
 A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
 document_id = 'document_id_example' # str | 
 
-try: 
+try:
     # A single document can be retrieved by calling this endpoint with the document’s unique identifier.
     api_response = api_instance.find_document(applicant_id, document_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->find_document: %s\n" % e)
 ```
 
 ### Parameters
@@ -475,33 +594,45 @@ Name | Type | Description  | Notes
 
 [**Document**](Document.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **find_live_photo**
 > LivePhoto find_live_photo(live_photo_id)
 
 Retrieve live photo
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 live_photo_id = 'live_photo_id_example' # str | The live photo’s unique identifier.
 
-try: 
+try:
     # Retrieve live photo
     api_response = api_instance.find_live_photo(live_photo_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->find_live_photo: %s\n" % e)
 ```
 
 ### Parameters
@@ -514,73 +645,46 @@ Name | Type | Description  | Notes
 
 [**LivePhoto**](LivePhoto.md)
 
-# **find_live_video**
-> LiveVideo find_live_video(live_video_id)
+### Authorization
 
-Retrieve live video
+[Token](../README.md#Token)
 
-### Example 
-```python
-from __future__ import print_statement
-import time
-import onfido
-from onfido.rest import ApiException
-from pprint import pprint
+### HTTP request headers
 
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
-# create an instance of the API class
-api_instance = onfido.DefaultApi()
-live_video_id = 'live_video_id_example' # str | The live video’s unique identifier.
-
-try: 
-    # Retrieve live video
-    api_response = api_instance.find_live_video(live_video_id)
-    pprint(api_response)
-except ApiException as e:
-    pprint(e.body)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **live_video_id** | **str**| The live video’s unique identifier. | 
-
-### Return type
-
-[**LiveVideo**](LiveVideo.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_report**
 > Report find_report(check_id, report_id)
 
 A single report can be retrieved using this endpoint with the corresponding unique identifier.
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 check_id = 'check_id_example' # str | 
 report_id = 'report_id_example' # str | 
 
-try: 
+try:
     # A single report can be retrieved using this endpoint with the corresponding unique identifier.
     api_response = api_instance.find_report(check_id, report_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->find_report: %s\n" % e)
 ```
 
 ### Parameters
@@ -594,33 +698,45 @@ Name | Type | Description  | Notes
 
 [**Report**](Report.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **find_report_type_group**
 > ReportTypeGroup find_report_type_group(report_type_group_id)
 
 Retrieve single report type group object
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 report_type_group_id = 'report_type_group_id_example' # str | 
 
-try: 
+try:
     # Retrieve single report type group object
     api_response = api_instance.find_report_type_group(report_type_group_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->find_report_type_group: %s\n" % e)
 ```
 
 ### Parameters
@@ -633,33 +749,45 @@ Name | Type | Description  | Notes
 
 [**ReportTypeGroup**](ReportTypeGroup.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **find_webhook**
 > Webhook find_webhook(webhook_id)
 
 Retrieve a Webhook
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 webhook_id = 'webhook_id_example' # str | 
 
-try: 
+try:
     # Retrieve a Webhook
     api_response = api_instance.find_webhook(webhook_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->find_webhook: %s\n" % e)
 ```
 
 ### Parameters
@@ -672,78 +800,102 @@ Name | Type | Description  | Notes
 
 [**Webhook**](Webhook.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_applicants**
 > ApplicantsList list_applicants(page=page, per_page=per_page, include_deleted=include_deleted)
 
 List Applicants
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
-page = 56 # int | The page to return. Defaults to the first page if omitted. The first page is `page=1` (optional)
-per_page = 56 # int | The number of objects per page. Defaults to 20 if omitted. (optional)
-include_deleted = true # bool | Whether to also include applicants scheduled for deletion. Defaults to false if omitted. (optional)
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
+page = 1 # int | The page to return. The first page is `page=1` (optional) (default to 1)
+per_page = 20 # int | The number of objects per page. (optional) (default to 20)
+include_deleted = False # bool | Whether to also include applicants scheduled for deletion. (optional) (default to False)
 
-try: 
+try:
     # List Applicants
     api_response = api_instance.list_applicants(page=page, per_page=per_page, include_deleted=include_deleted)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->list_applicants: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **page** | **int**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional] 
- **per_page** | **int**| The number of objects per page. Defaults to 20 if omitted. | [optional] 
- **include_deleted** | **bool**| Whether to also include applicants scheduled for deletion. Defaults to false if omitted. | [optional] 
+ **page** | **int**| The page to return. The first page is &#x60;page&#x3D;1&#x60; | [optional] [default to 1]
+ **per_page** | **int**| The number of objects per page. | [optional] [default to 20]
+ **include_deleted** | **bool**| Whether to also include applicants scheduled for deletion. | [optional] [default to False]
 
 ### Return type
 
 [**ApplicantsList**](ApplicantsList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_checks**
 > ChecksList list_checks(applicant_id, page=page, per_page=per_page)
 
 Retrieve Checks
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
-page = 56 # int | The page to return. Defaults to the first page if omitted. The first page is `page=1` (optional)
-per_page = 56 # int | The number of objects per page. Defaults to 20 if omitted. (optional)
+page = 1 # int | The page to return. The first page is `page=1`. (optional) (default to 1)
+per_page = 20 # int | The number of objects per page. (optional) (default to 20)
 
-try: 
+try:
     # Retrieve Checks
     api_response = api_instance.list_checks(applicant_id, page=page, per_page=per_page)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->list_checks: %s\n" % e)
 ```
 
 ### Parameters
@@ -751,12 +903,23 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicant_id** | **str**|  | 
- **page** | **int**| The page to return. Defaults to the first page if omitted. The first page is &#x60;page&#x3D;1&#x60; | [optional] 
- **per_page** | **int**| The number of objects per page. Defaults to 20 if omitted. | [optional] 
+ **page** | **int**| The page to return. The first page is &#x60;page&#x3D;1&#x60;. | [optional] [default to 1]
+ **per_page** | **int**| The number of objects per page. | [optional] [default to 20]
 
 ### Return type
 
 [**ChecksList**](ChecksList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_documents**
 > DocumentsList list_documents(applicant_id)
@@ -765,28 +928,29 @@ List documents
 
 All documents belonging to an applicant can be listed from this endpoint
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
 
-try: 
+try:
     # List documents
     api_response = api_instance.list_documents(applicant_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->list_documents: %s\n" % e)
 ```
 
 ### Parameters
@@ -799,33 +963,45 @@ Name | Type | Description  | Notes
 
 [**DocumentsList**](DocumentsList.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_live_photos**
 > LivePhotosList list_live_photos(applicant_id)
 
 List live photos
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | The id of the applicant the live photos belong to.
 
-try: 
+try:
     # List live photos
     api_response = api_instance.list_live_photos(applicant_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->list_live_photos: %s\n" % e)
 ```
 
 ### Parameters
@@ -838,71 +1014,44 @@ Name | Type | Description  | Notes
 
 [**LivePhotosList**](LivePhotosList.md)
 
-# **list_live_videos**
-> LiveVideosList list_live_videos(applicant_id)
+### Authorization
 
-List live videos
+[Token](../README.md#Token)
 
-### Example 
-```python
-from __future__ import print_statement
-import time
-import onfido
-from onfido.rest import ApiException
-from pprint import pprint
+### HTTP request headers
 
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
-# create an instance of the API class
-api_instance = onfido.DefaultApi()
-applicant_id = 'applicant_id_example' # str | The id of the applicant the live videos belong to.
-
-try: 
-    # List live videos
-    api_response = api_instance.list_live_videos(applicant_id)
-    pprint(api_response)
-except ApiException as e:
-    pprint(e.body)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **applicant_id** | **str**| The id of the applicant the live videos belong to. | 
-
-### Return type
-
-[**LiveVideosList**](LiveVideosList.md)
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_report_type_groups**
 > ReportTypeGroupsList list_report_type_groups()
 
 Retrieve all report type groups
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 
-try: 
+try:
     # Retrieve all report type groups
     api_response = api_instance.list_report_type_groups()
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->list_report_type_groups: %s\n" % e)
 ```
 
 ### Parameters
@@ -912,33 +1061,45 @@ This endpoint does not need any parameter.
 
 [**ReportTypeGroupsList**](ReportTypeGroupsList.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_reports**
 > ReportsList list_reports(check_id)
 
 All the reports belonging to a particular check can be listed from this endpoint.
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 check_id = 'check_id_example' # str | 
 
-try: 
+try:
     # All the reports belonging to a particular check can be listed from this endpoint.
     api_response = api_instance.list_reports(check_id)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->list_reports: %s\n" % e)
 ```
 
 ### Parameters
@@ -951,32 +1112,44 @@ Name | Type | Description  | Notes
 
 [**ReportsList**](ReportsList.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **list_webhooks**
 > WebhooksList list_webhooks()
 
 List webhooks
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 
-try: 
+try:
     # List webhooks
     api_response = api_instance.list_webhooks()
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->list_webhooks: %s\n" % e)
 ```
 
 ### Parameters
@@ -986,32 +1159,44 @@ This endpoint does not need any parameter.
 
 [**WebhooksList**](WebhooksList.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **restore_applicant**
 > restore_applicant(applicant_id)
 
 Restore Applicant
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
 
-try: 
+try:
     # Restore Applicant
     api_instance.restore_applicant(applicant_id)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->restore_applicant: %s\n" % e)
 ```
 
 ### Parameters
@@ -1024,32 +1209,44 @@ Name | Type | Description  | Notes
 
 void (empty response body)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **resume_check**
 > resume_check(check_id)
 
 Resume a Check
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 check_id = 'check_id_example' # str | 
 
-try: 
+try:
     # Resume a Check
     api_instance.resume_check(check_id)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->resume_check: %s\n" % e)
 ```
 
 ### Parameters
@@ -1062,33 +1259,45 @@ Name | Type | Description  | Notes
 
 void (empty response body)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **resume_report**
 > resume_report(check_id, report_id)
 
 This endpoint is for resuming individual paused reports.
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 check_id = 'check_id_example' # str | 
 report_id = 'report_id_example' # str | 
 
-try: 
+try:
     # This endpoint is for resuming individual paused reports.
     api_instance.resume_report(check_id, report_id)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->resume_report: %s\n" % e)
 ```
 
 ### Parameters
@@ -1102,34 +1311,48 @@ Name | Type | Description  | Notes
 
 void (empty response body)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **update_applicant**
-> Applicant update_applicant(applicant_id, data=data)
+> Applicant update_applicant(applicant_id, applicant)
 
 Update Applicant
 
-### Example 
+Allows updating of an applicant’s information before any checks are created. - Partial updates - Addresses and ID numbers present will replace existing ones - Same applicant validations to create applicant 
+
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
-data = onfido.Applicant() # Applicant |  (optional)
+applicant = onfido.Applicant() # Applicant | 
 
-try: 
+try:
     # Update Applicant
-    api_response = api_instance.update_applicant(applicant_id, data=data)
+    api_response = api_instance.update_applicant(applicant_id, applicant)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->update_applicant: %s\n" % e)
 ```
 
 ### Parameters
@@ -1137,44 +1360,56 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicant_id** | **str**|  | 
- **data** | [**Applicant**](Applicant.md)|  | [optional] 
+ **applicant** | [**Applicant**](Applicant.md)|  | 
 
 ### Return type
 
 [**Applicant**](Applicant.md)
 
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **upload_document**
-> Document upload_document(applicant_id, type, side=side, file=file)
+> Document upload_document(applicant_id, type, file, side=side)
 
 Upload a document
 
 Documents are uploaded using this endpoint. Along with the file upload the relevant document type must be specified. Documents must be uploaded as a multipart form. The valid file types are: jpg, png and pdf. The file size must be between 2KB and 3MB. 
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
-type = 'type_example' # str | 
-side = 'side_example' # str |  (optional)
-file = '/path/to/file.txt' # file |  (optional)
+type = 'type_example' # str | The type of document.
+file = '/path/to/file' # file | The file to be uploaded.
+side = 'side_example' # str | Either the `front` or `back` of the document. (optional)
 
-try: 
+try:
     # Upload a document
-    api_response = api_instance.upload_document(applicant_id, type, side=side, file=file)
+    api_response = api_instance.upload_document(applicant_id, type, file, side=side)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->upload_document: %s\n" % e)
 ```
 
 ### Parameters
@@ -1182,13 +1417,24 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicant_id** | **str**|  | 
- **type** | **str**|  | 
- **side** | **str**|  | [optional] 
- **file** | **file**|  | [optional] 
+ **type** | **str**| The type of document. | 
+ **file** | **file**| The file to be uploaded. | 
+ **side** | **str**| Either the &#x60;front&#x60; or &#x60;back&#x60; of the document. | [optional] 
 
 ### Return type
 
 [**Document**](Document.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_live_photo**
 > LivePhoto upload_live_photo(applicant_id, file, advanced_validation=advanced_validation)
@@ -1197,41 +1443,53 @@ Upload live photo
 
 You can upload live photos to this endpoint. Like document upload, files must be uploaded as a multipart form. Valid file types are jpg, png and pdf. The file size must be between 32KB and 10MB. Live photos are validated at the point of upload to check that they contain exactly one face. This validation can be disabled by setting the advanced_validation argument to false. 
 
-### Example 
+### Example
+
+* Api Key Authentication (Token):
 ```python
-from __future__ import print_statement
+from __future__ import print_function
 import time
 import onfido
 from onfido.rest import ApiException
 from pprint import pprint
-
-# Configure API key authorization: Token
-onfido.configuration.api_key['Authorization'] = 'token=' + 'YOUR_API_KEY'
-onfido.configuration.api_key_prefix['Authorization'] = 'Token'
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
-api_instance = onfido.DefaultApi()
-applicant_id = 'applicant_id_example' # str | The applicant_id to associate the live photo to.
-file = '/path/to/file.txt' # file | The file to be uploaded.
-advanced_validation = true # bool | Validates that the live photo contains exactly one face. (optional)
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
+applicant_id = 'applicant_id_example' # str | 
+file = '/path/to/file' # file | The file to be uploaded.
+advanced_validation = True # bool | Validates that the live photo contains exactly one face. (optional) (default to True)
 
-try: 
+try:
     # Upload live photo
     api_response = api_instance.upload_live_photo(applicant_id, file, advanced_validation=advanced_validation)
     pprint(api_response)
 except ApiException as e:
-    pprint(e.body)
+    print("Exception when calling DefaultApi->upload_live_photo: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicant_id** | **str**| The applicant_id to associate the live photo to. | 
+ **applicant_id** | **str**|  | 
  **file** | **file**| The file to be uploaded. | 
- **advanced_validation** | **bool**| Validates that the live photo contains exactly one face. | [optional] 
+ **advanced_validation** | **bool**| Validates that the live photo contains exactly one face. | [optional] [default to True]
 
 ### Return type
 
 [**LivePhoto**](LivePhoto.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

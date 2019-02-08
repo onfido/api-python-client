@@ -3,21 +3,21 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **str** | The unique identifier for the applicant | [optional] 
-**created_at** | **datetime** | The date and time when this applicant was created | [optional] 
-**delete_at** | **datetime** | The date and time when this applicant is scheduled to be deleted, or null if the applicant is not scheduled to be deleted | [optional] 
-**href** | **str** | The uri of this resource | [optional] 
+**id** | **str** | The unique identifier for the applicant. Read-only. | [optional] 
+**created_at** | **datetime** | The date and time when this applicant was created. Read-only. | [optional] 
+**delete_at** | **datetime** | The date and time when this applicant is scheduled to be deleted. Read-only. | [optional] 
+**href** | **str** | The uri of this resource. Read-only. | [optional] 
+**sandbox** | **bool** | Read-only. | [optional] 
 **title** | **str** | The applicant’s title | [optional] 
-**first_name** | **str** | The applicant’s first name | 
+**first_name** | **str** | The applicant’s first name | [optional] 
 **middle_name** | **str** | The applicant’s middle name(s) or initial | [optional] 
-**last_name** | **str** | The applicant’s surname | 
-**email** | **str** | The applicant’s email address | [optional] 
-**gender** | **str** | The applicant’s gender. Valid values are male and female | [optional] 
+**last_name** | **str** | The applicant’s surname | [optional] 
+**email** | **str** | The applicant’s email address. Required if doing a US check or a standard UK check. | [optional] 
+**gender** | **str** | The applicant’s gender. Valid values are male and female. | [optional] 
 **dob** | **date** | The applicant’s date of birth | [optional] 
 **telephone** | **str** | The applicant’s landline phone number | [optional] 
 **mobile** | **str** | The applicant’s mobile phone number | [optional] 
 **country** | **str** | The country where this applicant will be checked. This must be a three-letter ISO code e.g. GBR or USA | [optional] 
-**sandbox** | **bool** |  | [optional] 
 **nationality** | **str** | The applicant&#39;s nationality. This must be a three-letter ISO code e.g. GBR or USA | [optional] 
 **mothers_maiden_name** | **str** | The applicant’s mothers maiden name | [optional] 
 **country_of_birth** | **str** | The applicant’s country of birth | [optional] 

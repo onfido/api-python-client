@@ -11,7 +11,6 @@ Name | Type | Description | Notes
 **town** | **str** | The town of the applicant’s address | [optional] 
 **postcode** | **str** | The postcode or ZIP of the applicant’s address | [optional] 
 **country** | **str** | The 3 character ISO country code of this address. For example, GBR is the country code for the United Kingdom | [optional] 
-**id** | **str** |  | [optional] 
 **start_date** | **date** | The date the applicant started living at this address | [optional] 
 **end_date** | **date** | The date the applicant left this address. If current residence, leave null | [optional] 
 **state** | **str** | The address state. US states must use the USPS abbreviation (see also ISO 3166-2:US), for example AK, CA, or TX. | [optional] 

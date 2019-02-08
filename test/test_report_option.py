@@ -15,12 +15,12 @@ from __future__ import absolute_import
 import unittest
 
 import onfido
-from onfido.models.documents_list import DocumentsList  # noqa: E501
+from onfido.models.report_option import ReportOption  # noqa: E501
 from onfido.rest import ApiException
 
 
-class TestDocumentsList(unittest.TestCase):
-    """DocumentsList unit test stubs"""
+class TestReportOption(unittest.TestCase):
+    """ReportOption unit test stubs"""
 
     def setUp(self):
         pass
@@ -28,10 +28,10 @@ class TestDocumentsList(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def testDocumentsList(self):
-        """Test DocumentsList"""
+    def testReportOption(self):
+        """Test ReportOption"""
         # FIXME: construct object with mandatory attributes with example values
-        # model = onfido.models.documents_list.DocumentsList()  # noqa: E501
+        # model = onfido.models.report_option.ReportOption()  # noqa: E501
         pass
 
 
