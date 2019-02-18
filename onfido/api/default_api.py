@@ -728,6 +728,102 @@ class DefaultApi(object):
             _request_timeout=local_var_params.get('_request_timeout'),
             collection_formats=collection_formats)
 
+    def download_live_video(self, live_video_id, **kwargs):  # noqa: E501
+        """Download live video  # noqa: E501
+
+        Live videos are downloaded using this endpoint.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.download_live_video(live_video_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str live_video_id: The live video’s unique identifier. (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.download_live_video_with_http_info(live_video_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.download_live_video_with_http_info(live_video_id, **kwargs)  # noqa: E501
+            return data
+
+    def download_live_video_with_http_info(self, live_video_id, **kwargs):  # noqa: E501
+        """Download live video  # noqa: E501
+
+        Live videos are downloaded using this endpoint.  # noqa: E501
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.download_live_video_with_http_info(live_video_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str live_video_id: The live video’s unique identifier. (required)
+        :return: file
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['live_video_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method download_live_video" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'live_video_id' is set
+        if ('live_video_id' not in local_var_params or
+                local_var_params['live_video_id'] is None):
+            raise ValueError("Missing the required parameter `live_video_id` when calling `download_live_video`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'live_video_id' in local_var_params:
+            path_params['live_video_id'] = local_var_params['live_video_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['*/*', 'application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/live_videos/{live_video_id}/download', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='file',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def find_addresses(self, postcode, **kwargs):  # noqa: E501
         """Search for addresses by postcode  # noqa: E501
 
@@ -1207,6 +1303,100 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='LivePhoto',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def find_live_video(self, live_video_id, **kwargs):  # noqa: E501
+        """Retrieve live video  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.find_live_video(live_video_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str live_video_id: The live video’s unique identifier. (required)
+        :return: LiveVideo
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.find_live_video_with_http_info(live_video_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.find_live_video_with_http_info(live_video_id, **kwargs)  # noqa: E501
+            return data
+
+    def find_live_video_with_http_info(self, live_video_id, **kwargs):  # noqa: E501
+        """Retrieve live video  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.find_live_video_with_http_info(live_video_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str live_video_id: The live video’s unique identifier. (required)
+        :return: LiveVideo
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['live_video_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method find_live_video" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'live_video_id' is set
+        if ('live_video_id' not in local_var_params or
+                local_var_params['live_video_id'] is None):
+            raise ValueError("Missing the required parameter `live_video_id` when calling `find_live_video`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+        if 'live_video_id' in local_var_params:
+            path_params['live_video_id'] = local_var_params['live_video_id']  # noqa: E501
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/live_videos/{live_video_id}', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='LiveVideo',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
@@ -1887,6 +2077,100 @@ class DefaultApi(object):
             post_params=form_params,
             files=local_var_files,
             response_type='LivePhotosList',  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=local_var_params.get('async_req'),
+            _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501
+            _preload_content=local_var_params.get('_preload_content', True),
+            _request_timeout=local_var_params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
+    def list_live_videos(self, applicant_id, **kwargs):  # noqa: E501
+        """List live videos  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_live_videos(applicant_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str applicant_id: The id of the applicant the live videos belong to. (required)
+        :return: LiveVideosList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.list_live_videos_with_http_info(applicant_id, **kwargs)  # noqa: E501
+        else:
+            (data) = self.list_live_videos_with_http_info(applicant_id, **kwargs)  # noqa: E501
+            return data
+
+    def list_live_videos_with_http_info(self, applicant_id, **kwargs):  # noqa: E501
+        """List live videos  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.list_live_videos_with_http_info(applicant_id, async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :param str applicant_id: The id of the applicant the live videos belong to. (required)
+        :return: LiveVideosList
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        local_var_params = locals()
+
+        all_params = ['applicant_id']  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        for key, val in six.iteritems(local_var_params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method list_live_videos" % key
+                )
+            local_var_params[key] = val
+        del local_var_params['kwargs']
+        # verify the required parameter 'applicant_id' is set
+        if ('applicant_id' not in local_var_params or
+                local_var_params['applicant_id'] is None):
+            raise ValueError("Missing the required parameter `applicant_id` when calling `list_live_videos`")  # noqa: E501
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+        if 'applicant_id' in local_var_params:
+            query_params.append(('applicant_id', local_var_params['applicant_id']))  # noqa: E501
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
+        # Authentication setting
+        auth_settings = ['Token']  # noqa: E501
+
+        return self.api_client.call_api(
+            '/live_videos', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type='LiveVideosList',  # noqa: E501
             auth_settings=auth_settings,
             async_req=local_var_params.get('async_req'),
             _return_http_data_only=local_var_params.get('_return_http_data_only'),  # noqa: E501

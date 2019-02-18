@@ -77,6 +77,13 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_download_live_video(self):
+        """Test case for download_live_video
+
+        Download live video  # noqa: E501
+        """
+        pass
+
     def test_find_addresses(self):
         """Test case for find_addresses
 
@@ -109,6 +116,13 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for find_live_photo
 
         Retrieve live photo  # noqa: E501
+        """
+        pass
+
+    def test_find_live_video(self):
+        """Test case for find_live_video
+
+        Retrieve live video  # noqa: E501
         """
         pass
 
@@ -158,6 +172,13 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for list_live_photos
 
         List live photos  # noqa: E501
+        """
+        pass
+
+    def test_list_live_videos(self):
+        """Test case for list_live_videos
+
+        List live videos  # noqa: E501
         """
         pass
 

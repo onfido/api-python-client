@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "2.0.0"
+__version__ = "2.1.0"
 
 # import apis into sdk package
 from onfido.api.default_api import DefaultApi
@@ -38,6 +38,8 @@ from onfido.models.generic_addresses_list import GenericAddressesList
 from onfido.models.id_number import IdNumber
 from onfido.models.live_photo import LivePhoto
 from onfido.models.live_photos_list import LivePhotosList
+from onfido.models.live_video import LiveVideo
+from onfido.models.live_videos_list import LiveVideosList
 from onfido.models.report import Report
 from onfido.models.report_document import ReportDocument
 from onfido.models.report_option import ReportOption

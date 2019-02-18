@@ -11,11 +11,13 @@ Method | HTTP request | Description
 [**destroy_applicant**](DefaultApi.md#destroy_applicant) | **DELETE** /applicants/{applicant_id} | Delete Applicant
 [**download_document**](DefaultApi.md#download_document) | **GET** /applicants/{applicant_id}/documents/{document_id}/download | Download a documents raw data
 [**download_live_photo**](DefaultApi.md#download_live_photo) | **GET** /live_photos/{live_photo_id}/download | Download live photo
+[**download_live_video**](DefaultApi.md#download_live_video) | **GET** /live_videos/{live_video_id}/download | Download live video
 [**find_addresses**](DefaultApi.md#find_addresses) | **GET** /addresses/pick | Search for addresses by postcode
 [**find_applicant**](DefaultApi.md#find_applicant) | **GET** /applicants/{applicant_id} | Retrieve Applicant
 [**find_check**](DefaultApi.md#find_check) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
 [**find_document**](DefaultApi.md#find_document) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 [**find_live_photo**](DefaultApi.md#find_live_photo) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
+[**find_live_video**](DefaultApi.md#find_live_video) | **GET** /live_videos/{live_video_id} | Retrieve live video
 [**find_report**](DefaultApi.md#find_report) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 [**find_report_type_group**](DefaultApi.md#find_report_type_group) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
 [**find_webhook**](DefaultApi.md#find_webhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
@@ -23,6 +25,7 @@ Method | HTTP request | Description
 [**list_checks**](DefaultApi.md#list_checks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 [**list_documents**](DefaultApi.md#list_documents) | **GET** /applicants/{applicant_id}/documents | List documents
 [**list_live_photos**](DefaultApi.md#list_live_photos) | **GET** /live_photos | List live photos
+[**list_live_videos**](DefaultApi.md#list_live_videos) | **GET** /live_videos | List live videos
 [**list_report_type_groups**](DefaultApi.md#list_report_type_groups) | **GET** /report_type_groups | Retrieve all report type groups
 [**list_reports**](DefaultApi.md#list_reports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
 [**list_webhooks**](DefaultApi.md#list_webhooks) | **GET** /webhooks | List webhooks
@@ -397,6 +400,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **download_live_video**
+> file download_live_video(live_video_id)
+
+Download live video
+
+Live videos are downloaded using this endpoint.
+
+### Example
+
+* Api Key Authentication (Token):
+```python
+from __future__ import print_function
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
+live_video_id = 'live_video_id_example' # str | The live video’s unique identifier.
+
+try:
+    # Download live video
+    api_response = api_instance.download_live_video(live_video_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->download_live_video: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **live_video_id** | **str**| The live video’s unique identifier. | 
+
+### Return type
+
+**file**
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: */*, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **find_addresses**
 > GenericAddressesList find_addresses(postcode)
 
@@ -644,6 +700,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LivePhoto**](LivePhoto.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **find_live_video**
+> LiveVideo find_live_video(live_video_id)
+
+Retrieve live video
+
+### Example
+
+* Api Key Authentication (Token):
+```python
+from __future__ import print_function
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
+live_video_id = 'live_video_id_example' # str | The live video’s unique identifier.
+
+try:
+    # Retrieve live video
+    api_response = api_instance.find_live_video(live_video_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->find_live_video: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **live_video_id** | **str**| The live video’s unique identifier. | 
+
+### Return type
+
+[**LiveVideo**](LiveVideo.md)
 
 ### Authorization
 
@@ -1013,6 +1120,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LivePhotosList**](LivePhotosList.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **list_live_videos**
+> LiveVideosList list_live_videos(applicant_id)
+
+List live videos
+
+### Example
+
+* Api Key Authentication (Token):
+```python
+from __future__ import print_function
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
+applicant_id = 'applicant_id_example' # str | The id of the applicant the live videos belong to.
+
+try:
+    # List live videos
+    api_response = api_instance.list_live_videos(applicant_id)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->list_live_videos: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **applicant_id** | **str**| The id of the applicant the live videos belong to. | 
+
+### Return type
+
+[**LiveVideosList**](LiveVideosList.md)
 
 ### Authorization
 

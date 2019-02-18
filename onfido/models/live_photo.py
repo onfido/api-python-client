@@ -81,7 +81,7 @@ class LivePhoto(object):
     def id(self):
         """Gets the id of this LivePhoto.  # noqa: E501
 
-        The unique identifier for the document.  # noqa: E501
+        The unique identifier for the photo.  # noqa: E501
 
         :return: The id of this LivePhoto.  # noqa: E501
         :rtype: str
@@ -92,7 +92,7 @@ class LivePhoto(object):
     def id(self, id):
         """Sets the id of this LivePhoto.
 
-        The unique identifier for the document.  # noqa: E501
+        The unique identifier for the photo.  # noqa: E501
 
         :param id: The id of this LivePhoto.  # noqa: E501
         :type: str
@@ -104,7 +104,7 @@ class LivePhoto(object):
     def created_at(self):
         """Gets the created_at of this LivePhoto.  # noqa: E501
 
-        The date and time at which the document was uploaded.  # noqa: E501
+        The date and time at which the photo was uploaded.  # noqa: E501
 
         :return: The created_at of this LivePhoto.  # noqa: E501
         :rtype: datetime
@@ -115,7 +115,7 @@ class LivePhoto(object):
     def created_at(self, created_at):
         """Sets the created_at of this LivePhoto.
 
-        The date and time at which the document was uploaded.  # noqa: E501
+        The date and time at which the photo was uploaded.  # noqa: E501
 
         :param created_at: The created_at of this LivePhoto.  # noqa: E501
         :type: datetime
@@ -150,7 +150,7 @@ class LivePhoto(object):
     def download_href(self):
         """Gets the download_href of this LivePhoto.  # noqa: E501
 
-        The uri that can be used to download the document.  # noqa: E501
+        The uri that can be used to download the photo.  # noqa: E501
 
         :return: The download_href of this LivePhoto.  # noqa: E501
         :rtype: str
@@ -161,7 +161,7 @@ class LivePhoto(object):
     def download_href(self, download_href):
         """Sets the download_href of this LivePhoto.
 
-        The uri that can be used to download the document.  # noqa: E501
+        The uri that can be used to download the photo.  # noqa: E501
 
         :param download_href: The download_href of this LivePhoto.  # noqa: E501
         :type: str
