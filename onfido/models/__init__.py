@@ -39,6 +39,8 @@ from .generic_addresses_list import GenericAddressesList
 from .id_number import IdNumber
 from .live_photo import LivePhoto
 from .live_photos_list import LivePhotosList
+from .live_video import LiveVideo
+from .live_videos_list import LiveVideosList
 from .report import Report
 from .report_type import ReportType
 from .report_type_group import ReportTypeGroup
