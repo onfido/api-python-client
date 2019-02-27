@@ -46,7 +46,7 @@ class Check(object):
         'suppress_form_emails': 'bool',
         'charge_applicant_for_check': 'bool',
         'brand_id': 'str',
-        'async': 'bool',
+        'asynchronous': 'bool',
         'reports': 'list[Report]'
     }
 
@@ -66,11 +66,11 @@ class Check(object):
         'suppress_form_emails': 'suppress_form_emails',
         'charge_applicant_for_check': 'charge_applicant_for_check',
         'brand_id': 'brand_id',
-        'async': 'async',
+        'asynchronous': 'asynchronous',
         'reports': 'reports'
     }
 
-    def __init__(self, id=None, created_at=None, href=None, status=None, result=None, download_uri=None, form_uri=None, redirect_uri=None, results_uri=None, type=None, report_type_groups=None, tags=None, suppress_form_emails=False, charge_applicant_for_check=False, brand_id=None, async=False, reports=None):  # noqa: E501
+    def __init__(self, id=None, created_at=None, href=None, status=None, result=None, download_uri=None, form_uri=None, redirect_uri=None, results_uri=None, type=None, report_type_groups=None, tags=None, suppress_form_emails=None, charge_applicant_for_check=None, brand_id=None, asynchronous=None, reports=None):  # noqa: E501
         """Check - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
@@ -88,7 +88,7 @@ class Check(object):
         self._suppress_form_emails = None
         self._charge_applicant_for_check = None
         self._brand_id = None
-        self._async = None
+        self._asynchronous = None
         self._reports = None
         self.discriminator = None
 
@@ -121,8 +121,8 @@ class Check(object):
             self.charge_applicant_for_check = charge_applicant_for_check
         if brand_id is not None:
             self.brand_id = brand_id
-        if async is not None:
-            self.async = async
+        if asynchronous is not None:
+            self.asynchronous = asynchronous
         if reports is not None:
             self.reports = reports
 
@@ -408,7 +408,7 @@ class Check(object):
     def suppress_form_emails(self):
         """Gets the suppress_form_emails of this Check.  # noqa: E501
 
-        For standard checks, applicant form will not be automatically sent if this is set to true. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only.   # noqa: E501
+        For standard checks, applicant form will not be automatically sent if this is set to true. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only. Defaults to false.   # noqa: E501
 
         :return: The suppress_form_emails of this Check.  # noqa: E501
         :rtype: bool
@@ -419,7 +419,7 @@ class Check(object):
     def suppress_form_emails(self, suppress_form_emails):
         """Sets the suppress_form_emails of this Check.
 
-        For standard checks, applicant form will not be automatically sent if this is set to true. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only.   # noqa: E501
+        For standard checks, applicant form will not be automatically sent if this is set to true. You can manually send the form at any time after the check has been created, using the link found in the form_uri attribute of the check object. Write-only. Defaults to false.   # noqa: E501
 
         :param suppress_form_emails: The suppress_form_emails of this Check.  # noqa: E501
         :type: bool
@@ -431,7 +431,7 @@ class Check(object):
     def charge_applicant_for_check(self):
         """Gets the charge_applicant_for_check of this Check.  # noqa: E501
 
-        For standard checks, applicants will be presented with a mandatory payment screen before they can submit the applicant form, if this is set to true. In this case, your account will not be charged. Write-only.   # noqa: E501
+        For standard checks, applicants will be presented with a mandatory payment screen before they can submit the applicant form, if this is set to true. In this case, your account will not be charged. Write-only. Defaults to false.   # noqa: E501
 
         :return: The charge_applicant_for_check of this Check.  # noqa: E501
         :rtype: bool
@@ -442,7 +442,7 @@ class Check(object):
     def charge_applicant_for_check(self, charge_applicant_for_check):
         """Sets the charge_applicant_for_check of this Check.
 
-        For standard checks, applicants will be presented with a mandatory payment screen before they can submit the applicant form, if this is set to true. In this case, your account will not be charged. Write-only.   # noqa: E501
+        For standard checks, applicants will be presented with a mandatory payment screen before they can submit the applicant form, if this is set to true. In this case, your account will not be charged. Write-only. Defaults to false.   # noqa: E501
 
         :param charge_applicant_for_check: The charge_applicant_for_check of this Check.  # noqa: E501
         :type: bool
@@ -474,27 +474,27 @@ class Check(object):
         self._brand_id = brand_id
 
     @property
-    def async(self):
-        """Gets the async of this Check.  # noqa: E501
+    def asynchronous(self):
+        """Gets the asynchronous of this Check.  # noqa: E501
 
-        If this is set to true, we will queue checks for processing and return a response immediately. You can configure webhooks to notify you when the report is complete. Write-only.   # noqa: E501
+        If this is set to true, we will queue checks for processing and return a response immediately. You can configure webhooks to notify you when the report is complete. Write-only. Defaults to false.   # noqa: E501
 
-        :return: The async of this Check.  # noqa: E501
+        :return: The asynchronous of this Check.  # noqa: E501
         :rtype: bool
         """
-        return self._async
+        return self._asynchronous
 
-    @async.setter
-    def async(self, async):
-        """Sets the async of this Check.
+    @asynchronous.setter
+    def asynchronous(self, asynchronous):
+        """Sets the asynchronous of this Check.
 
-        If this is set to true, we will queue checks for processing and return a response immediately. You can configure webhooks to notify you when the report is complete. Write-only.   # noqa: E501
+        If this is set to true, we will queue checks for processing and return a response immediately. You can configure webhooks to notify you when the report is complete. Write-only. Defaults to false.   # noqa: E501
 
-        :param async: The async of this Check.  # noqa: E501
+        :param asynchronous: The asynchronous of this Check.  # noqa: E501
         :type: bool
         """
 
-        self._async = async
+        self._asynchronous = asynchronous
 
     @property
     def reports(self):

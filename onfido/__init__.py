@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "2.1.0"
+__version__ = "3.0.0"
 
 # import apis into sdk package
 from onfido.api.default_api import DefaultApi
