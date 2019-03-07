@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**find_report**](DefaultApi.md#find_report) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 [**find_report_type_group**](DefaultApi.md#find_report_type_group) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
 [**find_webhook**](DefaultApi.md#find_webhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
+[**generate_sdk_token**](DefaultApi.md#generate_sdk_token) | **POST** /sdk_token | Generate a SDK token
 [**list_applicants**](DefaultApi.md#list_applicants) | **GET** /applicants | List Applicants
 [**list_checks**](DefaultApi.md#list_checks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
 [**list_documents**](DefaultApi.md#list_documents) | **GET** /applicants/{applicant_id}/documents | List documents
@@ -914,6 +915,57 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **generate_sdk_token**
+> SdkTokenResponse generate_sdk_token(sdk_token_request)
+
+Generate a SDK token
+
+### Example
+
+* Api Key Authentication (Token):
+```python
+from __future__ import print_function
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
+sdk_token_request = onfido.SdkTokenRequest() # SdkTokenRequest | 
+
+try:
+    # Generate a SDK token
+    api_response = api_instance.generate_sdk_token(sdk_token_request)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->generate_sdk_token: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **sdk_token_request** | [**SdkTokenRequest**](SdkTokenRequest.md)|  | 
+
+### Return type
+
+[**SdkTokenResponse**](SdkTokenResponse.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

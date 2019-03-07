@@ -14,7 +14,7 @@
 
 from __future__ import absolute_import
 
-__version__ = "3.0.0"
+__version__ = "3.1.0"
 
 # import apis into sdk package
 from onfido.api.default_api import DefaultApi
@@ -47,5 +47,7 @@ from onfido.models.report_type import ReportType
 from onfido.models.report_type_group import ReportTypeGroup
 from onfido.models.report_type_groups_list import ReportTypeGroupsList
 from onfido.models.reports_list import ReportsList
+from onfido.models.sdk_token_request import SdkTokenRequest
+from onfido.models.sdk_token_response import SdkTokenResponse
 from onfido.models.webhook import Webhook
 from onfido.models.webhooks_list import WebhooksList

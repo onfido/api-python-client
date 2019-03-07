@@ -147,6 +147,13 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_generate_sdk_token(self):
+        """Test case for generate_sdk_token
+
+        Generate a SDK token  # noqa: E501
+        """
+        pass
+
     def test_list_applicants(self):
         """Test case for list_applicants
 
