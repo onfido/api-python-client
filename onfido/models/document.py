@@ -38,6 +38,7 @@ class Document(object):
         'file_type': 'str',
         'type': 'str',
         'side': 'str',
+        'issuing_country': 'str',
         'href': 'str',
         'download_href': 'str'
     }
@@ -50,11 +51,12 @@ class Document(object):
         'file_type': 'file_type',
         'type': 'type',
         'side': 'side',
+        'issuing_country': 'issuing_country',
         'href': 'href',
         'download_href': 'download_href'
     }
 
-    def __init__(self, id=None, created_at=None, file_name=None, file_size=None, file_type=None, type=None, side=None, href=None, download_href=None):  # noqa: E501
+    def __init__(self, id=None, created_at=None, file_name=None, file_size=None, file_type=None, type=None, side=None, issuing_country=None, href=None, download_href=None):  # noqa: E501
         """Document - a model defined in OpenAPI"""  # noqa: E501
 
         self._id = None
@@ -64,6 +66,7 @@ class Document(object):
         self._file_type = None
         self._type = None
         self._side = None
+        self._issuing_country = None
         self._href = None
         self._download_href = None
         self.discriminator = None
@@ -82,6 +85,8 @@ class Document(object):
             self.type = type
         if side is not None:
             self.side = side
+        if issuing_country is not None:
+            self.issuing_country = issuing_country
         if href is not None:
             self.href = href
         if download_href is not None:
@@ -247,6 +252,29 @@ class Document(object):
         """
 
         self._side = side
+
+    @property
+    def issuing_country(self):
+        """Gets the issuing_country of this Document.  # noqa: E501
+
+        The issuing country of the document, a 3-letter ISO code.  # noqa: E501
+
+        :return: The issuing_country of this Document.  # noqa: E501
+        :rtype: str
+        """
+        return self._issuing_country
+
+    @issuing_country.setter
+    def issuing_country(self, issuing_country):
+        """Sets the issuing_country of this Document.
+
+        The issuing country of the document, a 3-letter ISO code.  # noqa: E501
+
+        :param issuing_country: The issuing_country of this Document.  # noqa: E501
+        :type: str
+        """
+
+        self._issuing_country = issuing_country
 
     @property
     def href(self):

@@ -2954,6 +2954,7 @@ class DefaultApi(object):
         :param str type: The type of document. (required)
         :param file file: The file to be uploaded. (required)
         :param str side: Either the `front` or `back` of the document.
+        :param str issuing_country: The issuing country of the document, a 3-letter ISO code.
         :return: Document
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2979,6 +2980,7 @@ class DefaultApi(object):
         :param str type: The type of document. (required)
         :param file file: The file to be uploaded. (required)
         :param str side: Either the `front` or `back` of the document.
+        :param str issuing_country: The issuing country of the document, a 3-letter ISO code.
         :return: Document
                  If the method is called asynchronously,
                  returns the request thread.
@@ -2986,7 +2988,7 @@ class DefaultApi(object):
 
         local_var_params = locals()
 
-        all_params = ['applicant_id', 'type', 'file', 'side']  # noqa: E501
+        all_params = ['applicant_id', 'type', 'file', 'side', 'issuing_country']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -3027,10 +3029,12 @@ class DefaultApi(object):
         local_var_files = {}
         if 'type' in local_var_params:
             form_params.append(('type', local_var_params['type']))  # noqa: E501
-        if 'side' in local_var_params:
-            form_params.append(('side', local_var_params['side']))  # noqa: E501
         if 'file' in local_var_params:
             local_var_files['file'] = local_var_params['file']  # noqa: E501
+        if 'side' in local_var_params:
+            form_params.append(('side', local_var_params['side']))  # noqa: E501
+        if 'issuing_country' in local_var_params:
+            form_params.append(('issuing_country', local_var_params['issuing_country']))  # noqa: E501
 
         body_params = None
         # HTTP header `Accept`

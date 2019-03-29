@@ -1588,7 +1588,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **upload_document**
-> Document upload_document(applicant_id, type, file, side=side)
+> Document upload_document(applicant_id, type, file, side=side, issuing_country=issuing_country)
 
 Upload a document
 
@@ -1613,10 +1613,11 @@ applicant_id = 'applicant_id_example' # str |
 type = 'type_example' # str | The type of document.
 file = '/path/to/file' # file | The file to be uploaded.
 side = 'side_example' # str | Either the `front` or `back` of the document. (optional)
+issuing_country = 'issuing_country_example' # str | The issuing country of the document, a 3-letter ISO code. (optional)
 
 try:
     # Upload a document
-    api_response = api_instance.upload_document(applicant_id, type, file, side=side)
+    api_response = api_instance.upload_document(applicant_id, type, file, side=side, issuing_country=issuing_country)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->upload_document: %s\n" % e)
@@ -1630,6 +1631,7 @@ Name | Type | Description  | Notes
  **type** | **str**| The type of document. | 
  **file** | **file**| The file to be uploaded. | 
  **side** | **str**| Either the &#x60;front&#x60; or &#x60;back&#x60; of the document. | [optional] 
+ **issuing_country** | **str**| The issuing country of the document, a 3-letter ISO code. | [optional] 
 
 ### Return type
 
