@@ -56,6 +56,13 @@ class TestDefaultApi(unittest.TestCase):
         """
         pass
 
+    def test_delete_webhook(self):
+        """Test case for delete_webhook
+
+        Delete a webhook  # noqa: E501
+        """
+        pass
+
     def test_destroy_applicant(self):
         """Test case for destroy_applicant
 
@@ -81,6 +88,13 @@ class TestDefaultApi(unittest.TestCase):
         """Test case for download_live_video
 
         Download live video  # noqa: E501
+        """
+        pass
+
+    def test_edit_webhook(self):
+        """Test case for edit_webhook
+
+        Edit a webhook  # noqa: E501
         """
         pass
 

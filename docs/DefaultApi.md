@@ -8,10 +8,12 @@ Method | HTTP request | Description
 [**create_applicant**](DefaultApi.md#create_applicant) | **POST** /applicants | Create Applicant
 [**create_check**](DefaultApi.md#create_check) | **POST** /applicants/{applicant_id}/checks | Create a check
 [**create_webhook**](DefaultApi.md#create_webhook) | **POST** /webhooks | Create a webhook
+[**delete_webhook**](DefaultApi.md#delete_webhook) | **DELETE** /webhooks/{webhook_id} | Delete a webhook
 [**destroy_applicant**](DefaultApi.md#destroy_applicant) | **DELETE** /applicants/{applicant_id} | Delete Applicant
 [**download_document**](DefaultApi.md#download_document) | **GET** /applicants/{applicant_id}/documents/{document_id}/download | Download a documents raw data
 [**download_live_photo**](DefaultApi.md#download_live_photo) | **GET** /live_photos/{live_photo_id}/download | Download live photo
 [**download_live_video**](DefaultApi.md#download_live_video) | **GET** /live_videos/{live_video_id}/download | Download live video
+[**edit_webhook**](DefaultApi.md#edit_webhook) | **PUT** /webhooks/{webhook_id} | Edit a webhook
 [**find_addresses**](DefaultApi.md#find_addresses) | **GET** /addresses/pick | Search for addresses by postcode
 [**find_applicant**](DefaultApi.md#find_applicant) | **GET** /applicants/{applicant_id} | Retrieve Applicant
 [**find_check**](DefaultApi.md#find_check) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
@@ -245,6 +247,56 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **delete_webhook**
+> delete_webhook(webhook_id)
+
+Delete a webhook
+
+### Example
+
+* Api Key Authentication (Token):
+```python
+from __future__ import print_function
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
+webhook_id = 'webhook_id_example' # str | 
+
+try:
+    # Delete a webhook
+    api_instance.delete_webhook(webhook_id)
+except ApiException as e:
+    print("Exception when calling DefaultApi->delete_webhook: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhook_id** | **str**|  | 
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **destroy_applicant**
 > destroy_applicant(applicant_id)
 
@@ -451,6 +503,59 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: */*, application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **edit_webhook**
+> Webhook edit_webhook(webhook_id, webhook)
+
+Edit a webhook
+
+### Example
+
+* Api Key Authentication (Token):
+```python
+from __future__ import print_function
+import time
+import onfido
+from onfido.rest import ApiException
+from pprint import pprint
+configuration = onfido.Configuration()
+configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
+configuration.api_key_prefix['Authorization'] = 'Token'
+
+# create an instance of the API class
+api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
+webhook_id = 'webhook_id_example' # str | 
+webhook = onfido.Webhook() # Webhook | 
+
+try:
+    # Edit a webhook
+    api_response = api_instance.edit_webhook(webhook_id, webhook)
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->edit_webhook: %s\n" % e)
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webhook_id** | **str**|  | 
+ **webhook** | [**Webhook**](Webhook.md)|  | 
+
+### Return type
+
+[**Webhook**](Webhook.md)
+
+### Authorization
+
+[Token](../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
