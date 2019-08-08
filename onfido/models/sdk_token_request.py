@@ -32,23 +32,29 @@ class SdkTokenRequest(object):
     """
     openapi_types = {
         'applicant_id': 'str',
-        'referrer': 'str'
+        'referrer': 'str',
+        'application_id': 'str'
     }
 
     attribute_map = {
         'applicant_id': 'applicant_id',
-        'referrer': 'referrer'
+        'referrer': 'referrer',
+        'application_id': 'application_id'
     }
 
-    def __init__(self, applicant_id=None, referrer=None):  # noqa: E501
+    def __init__(self, applicant_id=None, referrer=None, application_id=None):  # noqa: E501
         """SdkTokenRequest - a model defined in OpenAPI"""  # noqa: E501
 
         self._applicant_id = None
         self._referrer = None
+        self._application_id = None
         self.discriminator = None
 
         self.applicant_id = applicant_id
-        self.referrer = referrer
+        if referrer is not None:
+            self.referrer = referrer
+        if application_id is not None:
+            self.application_id = application_id
 
     @property
     def applicant_id(self):
@@ -95,10 +101,31 @@ class SdkTokenRequest(object):
         :param referrer: The referrer of this SdkTokenRequest.  # noqa: E501
         :type: str
         """
-        if referrer is None:
-            raise ValueError("Invalid value for `referrer`, must not be `None`")  # noqa: E501
 
         self._referrer = referrer
+
+    @property
+    def application_id(self):
+        """Gets the application_id of this SdkTokenRequest.  # noqa: E501
+
+        The application ID (iOS or Android)  # noqa: E501
+
+        :return: The application_id of this SdkTokenRequest.  # noqa: E501
+        :rtype: str
+        """
+        return self._application_id
+
+    @application_id.setter
+    def application_id(self, application_id):
+        """Sets the application_id of this SdkTokenRequest.
+
+        The application ID (iOS or Android)  # noqa: E501
+
+        :param application_id: The application_id of this SdkTokenRequest.  # noqa: E501
+        :type: str
+        """
+
+        self._application_id = application_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""
