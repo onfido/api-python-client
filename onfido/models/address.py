@@ -41,7 +41,10 @@ class Address(object):
         'country': 'str',
         'start_date': 'date',
         'end_date': 'date',
-        'state': 'str'
+        'state': 'str',
+        'line1': 'str',
+        'line2': 'str',
+        'line3': 'str'
     }
 
     attribute_map = {
@@ -55,10 +58,13 @@ class Address(object):
         'country': 'country',
         'start_date': 'start_date',
         'end_date': 'end_date',
-        'state': 'state'
+        'state': 'state',
+        'line1': 'line1',
+        'line2': 'line2',
+        'line3': 'line3'
     }
 
-    def __init__(self, flat_number=None, building_number=None, building_name=None, street=None, sub_street=None, town=None, postcode=None, country=None, start_date=None, end_date=None, state=None):  # noqa: E501
+    def __init__(self, flat_number=None, building_number=None, building_name=None, street=None, sub_street=None, town=None, postcode=None, country=None, start_date=None, end_date=None, state=None, line1=None, line2=None, line3=None):  # noqa: E501
         """Address - a model defined in OpenAPI"""  # noqa: E501
 
         self._flat_number = None
@@ -72,6 +78,9 @@ class Address(object):
         self._start_date = None
         self._end_date = None
         self._state = None
+        self._line1 = None
+        self._line2 = None
+        self._line3 = None
         self.discriminator = None
 
         if flat_number is not None:
@@ -96,6 +105,12 @@ class Address(object):
             self.end_date = end_date
         if state is not None:
             self.state = state
+        if line1 is not None:
+            self.line1 = line1
+        if line2 is not None:
+            self.line2 = line2
+        if line3 is not None:
+            self.line3 = line3
 
     @property
     def flat_number(self):
@@ -349,6 +364,75 @@ class Address(object):
         """
 
         self._state = state
+
+    @property
+    def line1(self):
+        """Gets the line1 of this Address.  # noqa: E501
+
+        Line 1 of the applicant's address  # noqa: E501
+
+        :return: The line1 of this Address.  # noqa: E501
+        :rtype: str
+        """
+        return self._line1
+
+    @line1.setter
+    def line1(self, line1):
+        """Sets the line1 of this Address.
+
+        Line 1 of the applicant's address  # noqa: E501
+
+        :param line1: The line1 of this Address.  # noqa: E501
+        :type: str
+        """
+
+        self._line1 = line1
+
+    @property
+    def line2(self):
+        """Gets the line2 of this Address.  # noqa: E501
+
+        Line 2 of the applicant's address  # noqa: E501
+
+        :return: The line2 of this Address.  # noqa: E501
+        :rtype: str
+        """
+        return self._line2
+
+    @line2.setter
+    def line2(self, line2):
+        """Sets the line2 of this Address.
+
+        Line 2 of the applicant's address  # noqa: E501
+
+        :param line2: The line2 of this Address.  # noqa: E501
+        :type: str
+        """
+
+        self._line2 = line2
+
+    @property
+    def line3(self):
+        """Gets the line3 of this Address.  # noqa: E501
+
+        Line 3 of the applicant's address  # noqa: E501
+
+        :return: The line3 of this Address.  # noqa: E501
+        :rtype: str
+        """
+        return self._line3
+
+    @line3.setter
+    def line3(self, line3):
+        """Sets the line3 of this Address.
+
+        Line 3 of the applicant's address  # noqa: E501
+
+        :param line3: The line3 of this Address.  # noqa: E501
+        :type: str
+        """
+
+        self._line3 = line3
 
     def to_dict(self):
         """Returns the model properties as a dict"""
