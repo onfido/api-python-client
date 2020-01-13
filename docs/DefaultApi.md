@@ -1,47 +1,45 @@
 # onfido.DefaultApi
 
-All URIs are relative to *https://api.onfido.com/v2*
+All URIs are relative to *https://api.onfido.com/v3*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancel_report**](DefaultApi.md#cancel_report) | **POST** /checks/{check_id}/reports/{report_id}/cancel | This endpoint is for cancelling individual paused reports.
+[**cancel_report**](DefaultApi.md#cancel_report) | **POST** /reports/{report_id}/cancel | This endpoint is for cancelling individual paused reports.
 [**create_applicant**](DefaultApi.md#create_applicant) | **POST** /applicants | Create Applicant
-[**create_check**](DefaultApi.md#create_check) | **POST** /applicants/{applicant_id}/checks | Create a check
+[**create_check**](DefaultApi.md#create_check) | **POST** /checks | Create a check
 [**create_webhook**](DefaultApi.md#create_webhook) | **POST** /webhooks | Create a webhook
 [**delete_webhook**](DefaultApi.md#delete_webhook) | **DELETE** /webhooks/{webhook_id} | Delete a webhook
 [**destroy_applicant**](DefaultApi.md#destroy_applicant) | **DELETE** /applicants/{applicant_id} | Delete Applicant
-[**download_document**](DefaultApi.md#download_document) | **GET** /applicants/{applicant_id}/documents/{document_id}/download | Download a documents raw data
+[**download_document**](DefaultApi.md#download_document) | **GET** /documents/{document_id}/download | Download a documents raw data
 [**download_live_photo**](DefaultApi.md#download_live_photo) | **GET** /live_photos/{live_photo_id}/download | Download live photo
 [**download_live_video**](DefaultApi.md#download_live_video) | **GET** /live_videos/{live_video_id}/download | Download live video
 [**edit_webhook**](DefaultApi.md#edit_webhook) | **PUT** /webhooks/{webhook_id} | Edit a webhook
 [**find_addresses**](DefaultApi.md#find_addresses) | **GET** /addresses/pick | Search for addresses by postcode
 [**find_applicant**](DefaultApi.md#find_applicant) | **GET** /applicants/{applicant_id} | Retrieve Applicant
-[**find_check**](DefaultApi.md#find_check) | **GET** /applicants/{applicant_id}/checks/{check_id} | Retrieve a Check
-[**find_document**](DefaultApi.md#find_document) | **GET** /applicants/{applicant_id}/documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
+[**find_check**](DefaultApi.md#find_check) | **GET** /checks/{check_id} | Retrieve a Check
+[**find_document**](DefaultApi.md#find_document) | **GET** /documents/{document_id} | A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 [**find_live_photo**](DefaultApi.md#find_live_photo) | **GET** /live_photos/{live_photo_id} | Retrieve live photo
 [**find_live_video**](DefaultApi.md#find_live_video) | **GET** /live_videos/{live_video_id} | Retrieve live video
-[**find_report**](DefaultApi.md#find_report) | **GET** /checks/{check_id}/reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
-[**find_report_type_group**](DefaultApi.md#find_report_type_group) | **GET** /report_type_groups/{report_type_group_id} | Retrieve single report type group object
+[**find_report**](DefaultApi.md#find_report) | **GET** /reports/{report_id} | A single report can be retrieved using this endpoint with the corresponding unique identifier.
 [**find_webhook**](DefaultApi.md#find_webhook) | **GET** /webhooks/{webhook_id} | Retrieve a Webhook
 [**generate_sdk_token**](DefaultApi.md#generate_sdk_token) | **POST** /sdk_token | Generate a SDK token
 [**list_applicants**](DefaultApi.md#list_applicants) | **GET** /applicants | List Applicants
-[**list_checks**](DefaultApi.md#list_checks) | **GET** /applicants/{applicant_id}/checks | Retrieve Checks
-[**list_documents**](DefaultApi.md#list_documents) | **GET** /applicants/{applicant_id}/documents | List documents
+[**list_checks**](DefaultApi.md#list_checks) | **GET** /checks | Retrieve Checks
+[**list_documents**](DefaultApi.md#list_documents) | **GET** /documents | List documents
 [**list_live_photos**](DefaultApi.md#list_live_photos) | **GET** /live_photos | List live photos
 [**list_live_videos**](DefaultApi.md#list_live_videos) | **GET** /live_videos | List live videos
-[**list_report_type_groups**](DefaultApi.md#list_report_type_groups) | **GET** /report_type_groups | Retrieve all report type groups
-[**list_reports**](DefaultApi.md#list_reports) | **GET** /checks/{check_id}/reports | All the reports belonging to a particular check can be listed from this endpoint.
+[**list_reports**](DefaultApi.md#list_reports) | **GET** /reports | All the reports belonging to a particular check can be listed from this endpoint.
 [**list_webhooks**](DefaultApi.md#list_webhooks) | **GET** /webhooks | List webhooks
 [**restore_applicant**](DefaultApi.md#restore_applicant) | **POST** /applicants/{applicant_id}/restore | Restore Applicant
 [**resume_check**](DefaultApi.md#resume_check) | **POST** /checks/{check_id}/resume | Resume a Check
-[**resume_report**](DefaultApi.md#resume_report) | **POST** /checks/{check_id}/reports/{report_id}/resume | This endpoint is for resuming individual paused reports.
+[**resume_report**](DefaultApi.md#resume_report) | **POST** /reports/{report_id}/resume | This endpoint is for resuming individual paused reports.
 [**update_applicant**](DefaultApi.md#update_applicant) | **PUT** /applicants/{applicant_id} | Update Applicant
-[**upload_document**](DefaultApi.md#upload_document) | **POST** /applicants/{applicant_id}/documents | Upload a document
+[**upload_document**](DefaultApi.md#upload_document) | **POST** /documents | Upload a document
 [**upload_live_photo**](DefaultApi.md#upload_live_photo) | **POST** /live_photos | Upload live photo
 
 
 # **cancel_report**
-> cancel_report(check_id, report_id)
+> cancel_report(report_id)
 
 This endpoint is for cancelling individual paused reports.
 
@@ -60,12 +58,11 @@ configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-check_id = 'check_id_example' # str | 
 report_id = 'report_id_example' # str | 
 
 try:
     # This endpoint is for cancelling individual paused reports.
-    api_instance.cancel_report(check_id, report_id)
+    api_instance.cancel_report(report_id)
 except ApiException as e:
     print("Exception when calling DefaultApi->cancel_report: %s\n" % e)
 ```
@@ -74,7 +71,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **check_id** | **str**|  | 
  **report_id** | **str**|  | 
 
 ### Return type
@@ -144,7 +140,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_check**
-> Check create_check(applicant_id, check)
+> Check create_check(check)
 
 Create a check
 
@@ -163,12 +159,11 @@ configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-applicant_id = 'applicant_id_example' # str | 
 check = onfido.Check() # Check | 
 
 try:
     # Create a check
-    api_response = api_instance.create_check(applicant_id, check)
+    api_response = api_instance.create_check(check)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->create_check: %s\n" % e)
@@ -178,7 +173,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicant_id** | **str**|  | 
  **check** | [**Check**](Check.md)|  | 
 
 ### Return type
@@ -348,7 +342,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **download_document**
-> file download_document(applicant_id, document_id)
+> file download_document(document_id)
 
 Download a documents raw data
 
@@ -367,12 +361,11 @@ configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-applicant_id = 'applicant_id_example' # str | 
 document_id = 'document_id_example' # str | 
 
 try:
     # Download a documents raw data
-    api_response = api_instance.download_document(applicant_id, document_id)
+    api_response = api_instance.download_document(document_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->download_document: %s\n" % e)
@@ -382,7 +375,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicant_id** | **str**|  | 
  **document_id** | **str**|  | 
 
 ### Return type
@@ -560,7 +552,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_addresses**
-> GenericAddressesList find_addresses(postcode)
+> AddressesList find_addresses(postcode)
 
 Search for addresses by postcode
 
@@ -597,7 +589,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**GenericAddressesList**](GenericAddressesList.md)
+[**AddressesList**](AddressesList.md)
 
 ### Authorization
 
@@ -662,7 +654,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_check**
-> CheckWithReportIds find_check(applicant_id, check_id)
+> Check find_check(check_id)
 
 Retrieve a Check
 
@@ -681,12 +673,11 @@ configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-applicant_id = 'applicant_id_example' # str | 
 check_id = 'check_id_example' # str | 
 
 try:
     # Retrieve a Check
-    api_response = api_instance.find_check(applicant_id, check_id)
+    api_response = api_instance.find_check(check_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->find_check: %s\n" % e)
@@ -696,12 +687,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicant_id** | **str**|  | 
  **check_id** | **str**|  | 
 
 ### Return type
 
-[**CheckWithReportIds**](CheckWithReportIds.md)
+[**Check**](Check.md)
 
 ### Authorization
 
@@ -715,7 +705,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_document**
-> Document find_document(applicant_id, document_id)
+> Document find_document(document_id)
 
 A single document can be retrieved by calling this endpoint with the document’s unique identifier.
 
@@ -734,12 +724,11 @@ configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-applicant_id = 'applicant_id_example' # str | 
 document_id = 'document_id_example' # str | 
 
 try:
     # A single document can be retrieved by calling this endpoint with the document’s unique identifier.
-    api_response = api_instance.find_document(applicant_id, document_id)
+    api_response = api_instance.find_document(document_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->find_document: %s\n" % e)
@@ -749,7 +738,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicant_id** | **str**|  | 
  **document_id** | **str**|  | 
 
 ### Return type
@@ -870,7 +858,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **find_report**
-> Report find_report(check_id, report_id)
+> Report find_report(report_id)
 
 A single report can be retrieved using this endpoint with the corresponding unique identifier.
 
@@ -889,12 +877,11 @@ configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-check_id = 'check_id_example' # str | 
 report_id = 'report_id_example' # str | 
 
 try:
     # A single report can be retrieved using this endpoint with the corresponding unique identifier.
-    api_response = api_instance.find_report(check_id, report_id)
+    api_response = api_instance.find_report(report_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->find_report: %s\n" % e)
@@ -904,63 +891,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **check_id** | **str**|  | 
  **report_id** | **str**|  | 
 
 ### Return type
 
 [**Report**](Report.md)
-
-### Authorization
-
-[Token](../README.md#Token)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **find_report_type_group**
-> ReportTypeGroup find_report_type_group(report_type_group_id)
-
-Retrieve single report type group object
-
-### Example
-
-* Api Key Authentication (Token):
-```python
-from __future__ import print_function
-import time
-import onfido
-from onfido.rest import ApiException
-from pprint import pprint
-configuration = onfido.Configuration()
-configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
-configuration.api_key_prefix['Authorization'] = 'Token'
-
-# create an instance of the API class
-api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-report_type_group_id = 'report_type_group_id_example' # str | 
-
-try:
-    # Retrieve single report type group object
-    api_response = api_instance.find_report_type_group(report_type_group_id)
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->find_report_type_group: %s\n" % e)
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **report_type_group_id** | **str**|  | 
-
-### Return type
-
-[**ReportTypeGroup**](ReportTypeGroup.md)
 
 ### Authorization
 
@@ -1025,7 +960,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **generate_sdk_token**
-> SdkTokenResponse generate_sdk_token(sdk_token_request)
+> SdkToken generate_sdk_token(sdk_token)
 
 Generate a SDK token
 
@@ -1044,11 +979,11 @@ configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-sdk_token_request = onfido.SdkTokenRequest() # SdkTokenRequest | 
+sdk_token = onfido.SdkToken() # SdkToken | 
 
 try:
     # Generate a SDK token
-    api_response = api_instance.generate_sdk_token(sdk_token_request)
+    api_response = api_instance.generate_sdk_token(sdk_token)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->generate_sdk_token: %s\n" % e)
@@ -1058,11 +993,11 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sdk_token_request** | [**SdkTokenRequest**](SdkTokenRequest.md)|  | 
+ **sdk_token** | [**SdkToken**](SdkToken.md)|  | 
 
 ### Return type
 
-[**SdkTokenResponse**](SdkTokenResponse.md)
+[**SdkToken**](SdkToken.md)
 
 ### Authorization
 
@@ -1131,7 +1066,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list_checks**
-> ChecksList list_checks(applicant_id, page=page, per_page=per_page)
+> ChecksList list_checks(applicant_id)
 
 Retrieve Checks
 
@@ -1151,12 +1086,10 @@ configuration.api_key_prefix['Authorization'] = 'Token'
 # create an instance of the API class
 api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
 applicant_id = 'applicant_id_example' # str | 
-page = 1 # int | The page to return. The first page is `page=1`. (optional) (default to 1)
-per_page = 20 # int | The number of objects per page. (optional) (default to 20)
 
 try:
     # Retrieve Checks
-    api_response = api_instance.list_checks(applicant_id, page=page, per_page=per_page)
+    api_response = api_instance.list_checks(applicant_id)
     pprint(api_response)
 except ApiException as e:
     print("Exception when calling DefaultApi->list_checks: %s\n" % e)
@@ -1167,8 +1100,6 @@ except ApiException as e:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicant_id** | **str**|  | 
- **page** | **int**| The page to return. The first page is &#x60;page&#x3D;1&#x60;. | [optional] [default to 1]
- **per_page** | **int**| The number of objects per page. | [optional] [default to 20]
 
 ### Return type
 
@@ -1328,53 +1259,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**LiveVideosList**](LiveVideosList.md)
-
-### Authorization
-
-[Token](../README.md#Token)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **list_report_type_groups**
-> ReportTypeGroupsList list_report_type_groups()
-
-Retrieve all report type groups
-
-### Example
-
-* Api Key Authentication (Token):
-```python
-from __future__ import print_function
-import time
-import onfido
-from onfido.rest import ApiException
-from pprint import pprint
-configuration = onfido.Configuration()
-configuration.api_key['Authorization'] = 'token=' + 'YOUR API TOKEN'
-configuration.api_key_prefix['Authorization'] = 'Token'
-
-# create an instance of the API class
-api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-
-try:
-    # Retrieve all report type groups
-    api_response = api_instance.list_report_type_groups()
-    pprint(api_response)
-except ApiException as e:
-    print("Exception when calling DefaultApi->list_report_type_groups: %s\n" % e)
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**ReportTypeGroupsList**](ReportTypeGroupsList.md)
 
 ### Authorization
 
@@ -1586,7 +1470,7 @@ void (empty response body)
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **resume_report**
-> resume_report(check_id, report_id)
+> resume_report(report_id)
 
 This endpoint is for resuming individual paused reports.
 
@@ -1605,12 +1489,11 @@ configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-check_id = 'check_id_example' # str | 
 report_id = 'report_id_example' # str | 
 
 try:
     # This endpoint is for resuming individual paused reports.
-    api_instance.resume_report(check_id, report_id)
+    api_instance.resume_report(report_id)
 except ApiException as e:
     print("Exception when calling DefaultApi->resume_report: %s\n" % e)
 ```
@@ -1619,7 +1502,6 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **check_id** | **str**|  | 
  **report_id** | **str**|  | 
 
 ### Return type
@@ -1714,7 +1596,7 @@ configuration.api_key_prefix['Authorization'] = 'Token'
 
 # create an instance of the API class
 api_instance = onfido.DefaultApi(onfido.ApiClient(configuration))
-applicant_id = 'applicant_id_example' # str | 
+applicant_id = 'applicant_id_example' # str | The ID of the applicant whose document is being uploaded.
 type = 'type_example' # str | The type of document.
 file = '/path/to/file' # file | The file to be uploaded.
 side = 'side_example' # str | Either the `front` or `back` of the document. (optional)
@@ -1732,7 +1614,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **applicant_id** | **str**|  | 
+ **applicant_id** | **str**| The ID of the applicant whose document is being uploaded. | 
  **type** | **str**| The type of document. | 
  **file** | **file**| The file to be uploaded. | 
  **side** | **str**| Either the &#x60;front&#x60; or &#x60;back&#x60; of the document. | [optional] 

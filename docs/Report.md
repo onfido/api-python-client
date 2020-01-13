@@ -12,8 +12,6 @@ Name | Type | Description | Notes
 **breakdown** | **dict(str, object)** | The details of the report. This is specific to each type of report. Read-only. | [optional] 
 **properties** | **dict(str, object)** | The properties associated with the report, if any. Read-only. | [optional] 
 **name** | **str** | The name of the report type. | 
-**variant** | **str** | The name of the report type variant, if required. | [optional] 
-**options** | [**list[ReportOption]**](ReportOption.md) | List of Report Option objects. | [optional] 
 **documents** | [**list[ReportDocument]**](ReportDocument.md) | Array of objects with document ids that were used in the Onfido engine. [ONLY USED IN A DOCUMENT CHECK] | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
