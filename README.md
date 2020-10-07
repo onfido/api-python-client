@@ -1,3 +1,7 @@
+# :warning: Please use [onfido-python](https://github.com/onfido/onfido-python) instead :warning:
+
+This library has been superseded by [onfido-python](https://github.com/onfido/onfido-python)
+
 # onfido
 The Onfido API is used to submit check requests.
 
